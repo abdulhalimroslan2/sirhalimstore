@@ -598,6 +598,61 @@ button {
   font-weight: 700;
 }
 
+/* ==========================================================================
+   LICENSE SEARCH RESULTS STYLING
+   ========================================================================== */
+.license-item-result {
+  background: #f5f5f7;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.license-item-result:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.license-result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.license-result-key {
+  font-family: var(--apple-font-mono);
+  font-weight: 700;
+  color: var(--apple-blue);
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.license-result-meta {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.license-result-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.license-result-actions .btn-buy-pill {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .floating-online-badge {
   position: absolute;
   bottom: 0;

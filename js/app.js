@@ -410,29 +410,54 @@ class SirHalimStoreApp {
 
     if (container) {
       container.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--text-secondary);">Mencari dalam pangkalan data Supabase...</div>`;
-    }
-
-    try {
-      const results = await window.licenseEngine.lookupLicense(query);
-      if (container) {
-        if (results && results.length > 0) {
-          container.innerHTML = results.map(r => `
-            <div class="license-item-result">
-              <div>
-                <div style="font-family: var(--apple-font-mono); font-weight: 700; color: var(--apple-blue); font-size: 15px;">${r.key}</div>
-                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">${r.customer_name || 'Pembeli'} • Baki: ${r.downloads_left !== undefined ? r.downloads_left : 4}x</div>
+      try {
+        const results = await window.licenseEngine.lookupLicense(query);
+        if (container) {
+          if (results && results.length > 0) {
+            container.innerHTML = results.map(r => {
+              const portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}`;
+              return `
+              <div class="license-item-result">
+                <div class="license-result-top">
+                  <div>
+                    <div class="license-result-key">${r.key}</div>
+                    <div class="license-result-meta">${r.customer_name || 'Pembeli'} • Baki Muat Turun: <strong>${r.downloads_left !== undefined ? r.downloads_left : 4}x</strong></div>
+                  </div>
+                </div>
+                <div class="license-result-actions">
+                  <a href="${portalUrl}" target="_blank" class="btn-buy-pill" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Buka Portal Muat Turun Sekarang &rsaquo;
+                  </a>
+                  <button type="button" class="btn-buy-pill btn-pill-white" onclick="navigator.clipboard.writeText('${r.key}'); alert('Kod lesen ${r.key} disalin!');">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Salin Kod
+                  </button>
+                </div>
               </div>
-              <a href="https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}" target="_blank" class="btn-apple-pill" style="padding: 4px 12px; font-size: 12px;">
-                Muat Turun
-              </a>
-            </div>
-          `).join("");
-        } else {
-          container.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--text-secondary);">Tiada rekod lesen dijumpai untuk carian "${query}".</div>`;
+            `;
+            }).join("");
+          } else {
+            container.innerHTML = `
+              <div style="text-align: center; padding: 25px 15px; color: var(--text-secondary); background: #f5f5f7; border-radius: 12px;">
+                Tiada rekod lesen dijumpai untuk carian: <strong>${query}</strong>.<br>
+                <span style="font-size: 12px; margin-top: 4px; display: block;">Pastikan no. telefon atau emel sama seperti semasa membuat bayaran.</span>
+              </div>
+            `;
+          }
+        }
+      } catch (err) {
+        if (container) {
+          container.innerHTML = `<div style="text-align: center; color: #ff3b30; padding: 15px;">Ralat membuat carian: ${err.message}</div>`;
         }
       }
-    } catch (err) {
-      if (container) container.innerHTML = `<div style="text-align: center; color: var(--apple-red);">Ralat carian: ${err.message}</div>`;
     }
   }
 
