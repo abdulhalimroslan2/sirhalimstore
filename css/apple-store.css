@@ -321,11 +321,11 @@ button {
 .product-card {
   flex: 0 0 380px;
   max-width: 400px;
-  height: 500px;
+  height: 520px;
   background: var(--bg-card);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
-  padding: 30px;
+  padding: 26px 26px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -383,7 +383,7 @@ button {
   color: var(--text-muted);
   line-height: 1.35;
   letter-spacing: -0.01em;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .product-card.card-dark .card-subtext {
@@ -406,20 +406,26 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 0;
+  margin: 12px 0;
   position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  width: 100%;
 }
 
 .card-product-img {
-  max-height: 220px;
-  max-width: 90%;
-  object-fit: contain;
-  border-radius: 8px;
-  transition: transform 0.3s;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
 
 .product-card:hover .card-product-img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .card-bottom-btn-row {
@@ -427,6 +433,7 @@ button {
   align-items: center;
   justify-content: space-between;
   z-index: 2;
+  margin-top: 4px;
 }
 
 .btn-buy-pill {
