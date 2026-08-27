@@ -175,13 +175,110 @@ class SirHalimStoreApp {
     this.currentProduct = product;
 
     const modal = document.getElementById("productDetailModal");
-    const imgEl = modal ? modal.querySelector("img[alt='Cover']") : null;
-    const titleEl = modal ? modal.querySelector("h4") : null;
+    if (!modal) return;
+
+    const imgEl = document.getElementById("detailProductImg");
+    const titleEl = document.getElementById("detailProductTitle");
+    const bannerLink = document.getElementById("detailPortalBannerLink");
+    const bannerTitle = document.getElementById("detailPortalBannerTitle");
+    const bannerSub = document.getElementById("detailPortalBannerSub");
+    const featureList = document.getElementById("detailFeatureList");
+    const buyBtn = document.getElementById("detailBuyBtn");
+    const secondaryPortalBtn = document.getElementById("detailSecondaryPortalBtn");
 
     if (imgEl) imgEl.src = product.coverImage;
     if (titleEl) titleEl.innerText = product.title;
 
-    if (modal) modal.classList.add("active");
+    if (product.id === "cids-suites-pro") {
+      if (bannerLink) bannerLink.href = "https://cidspro.vercel.app/";
+      if (bannerTitle) bannerTitle.innerText = "Portal Rasmi CIDS Suites Pro";
+      if (bannerSub) bannerSub.innerText = "Lihat Video Tutorial & Muat Turun Versi Trial";
+      if (secondaryPortalBtn) {
+        secondaryPortalBtn.href = "https://cidspro.vercel.app/";
+        secondaryPortalBtn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          Tonton Tutorial & Muat Turun Trial di Portal Rasmi
+        `;
+      }
+      if (featureList) {
+        featureList.innerHTML = `
+          <li style="display: flex; gap: 8px; align-items: flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Lesen 1 Tahun:</strong> Sah aktif selama 365 hari untuk kegunaan 2 peranti komputer/laptop.</span>
+          </li>
+          <li style="display: flex; gap: 8px; align-items: flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Automasi RPH Pintar:</strong> Penulisan RPH pantas, import jadual, DSKP bersepadu & Cloud Sync.</span>
+          </li>
+          <li style="display: flex; gap: 8px; align-items: flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Penyerahan Kunci Automatik:</strong> Kod lesen dikeluarkan secara automatik serta-merta selepas bayaran ToyyibPay.</span>
+          </li>
+          <li style="display: flex; gap: 8px; align-items: flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Tutorial & App Trial:</strong> Akses panduan penuh dan muat turun di <a href="https://cidspro.vercel.app/" target="_blank" style="color: var(--apple-blue); font-weight: 600; text-decoration: underline;">https://cidspro.vercel.app/</a></span>
+          </li>
+        `;
+      }
+      if (buyBtn) {
+        buyBtn.setAttribute("data-product", "cids-suites-pro");
+        buyBtn.innerText = "Beli Sekarang (RM 19.99)";
+      }
+    } else {
+      if (bannerLink) bannerLink.href = "https://kertas22026.vercel.app/";
+      if (bannerTitle) bannerTitle.innerText = "Portal Muat Turun Fizik SPM 2026";
+      if (bannerSub) bannerSub.innerText = "Muat Turun PDF E-Book & Skema Jawapan Penuh";
+      if (secondaryPortalBtn) {
+        secondaryPortalBtn.href = "https://kertas22026.vercel.app/";
+        secondaryPortalBtn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Buka Portal Muat Turun Fizik 2026
+        `;
+      }
+      if (featureList) {
+        featureList.innerHTML = `
+          <li style="display: flex; gap: 8px; align-items: flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Koleksi Soalan Trial Negeri:</strong> Himpunan soalan berkualiti tinggi mirip soalan percubaan SPM sebenar 2026.</span>
+          </li>
+          <li style="display: flex; gap: 8px; align-items: flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Skema & Analisis A+:</strong> Panduan pemarkahan terperinci, tip kata kunci, dan jalan kerja lengkap.</span>
+          </li>
+          <li style="display: flex; gap: 8px; align-items: flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Akses Digital Segera:</strong> Kod lesen dikeluarkan automatik untuk akses portal <a href="https://kertas22026.vercel.app/" target="_blank" style="color: var(--apple-blue); font-weight: 600; text-decoration: underline;">https://kertas22026.vercel.app/</a></span>
+          </li>
+        `;
+      }
+      if (buyBtn) {
+        buyBtn.setAttribute("data-product", "fizik-kertas2-2026");
+        buyBtn.innerText = "Beli Sekarang (RM 1.99)";
+      }
+    }
+
+    modal.classList.add("active");
   }
 
   openLicenseChecker() {
