@@ -14,7 +14,7 @@ const DATABASES_CONFIG = {
   cids: {
     url: "https://sennodrfmsijorfcnrud.supabase.co",
     key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlbm5vZHJmbXNpam9yZmNucnVkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDE3MzY2NiwiZXhwIjoyMDk5NzQ5NjY2fQ.a2Ocfy4OQ-nPaEDeyzI9slDFzyT8OwFtz403G8uFcAY",
-    portalUrl: "https://cidskey.vercel.app/",
+    portalUrl: "https://cidspro.vercel.app/",
     adminUrl: "https://cidskey.vercel.app/admin",
     keyPrefix: "CIDS"
   }
@@ -104,7 +104,7 @@ class LicenseEngine {
               assignedKeyRecord = {
                 ...updatedKey[0],
                 productType: "cids",
-                portalUrl: "https://cidskey.vercel.app/"
+                portalUrl: "https://cidspro.vercel.app/"
               };
               console.log("[Supabase CIDS] Berjaya Claim Kunci Sedia Ada:", assignedKeyRecord.key);
             }
@@ -134,7 +134,7 @@ class LicenseEngine {
               assignedKeyRecord = {
                 ...inserted[0],
                 productType: "cids",
-                portalUrl: "https://cidskey.vercel.app/"
+                portalUrl: "https://cidspro.vercel.app/"
               };
               console.log("[Supabase CIDS] Berjaya Jana & Simpan Kunci Baharu:", assignedKeyRecord.key);
             }
@@ -148,7 +148,7 @@ class LicenseEngine {
             ...newRecord,
             id: "local-" + Date.now(),
             productType: "cids",
-            portalUrl: "https://cidskey.vercel.app/",
+            portalUrl: "https://cidspro.vercel.app/",
             created_at: new Date().toISOString()
           };
         }
@@ -294,7 +294,7 @@ class LicenseEngine {
             customer_name: d.notes || "Pengguna CIDS Suites Pro",
             downloads_left: "2 Peranti (1 Tahun)",
             productType: "cids",
-            portalUrl: `https://cidskey.vercel.app/`
+            portalUrl: `https://cidspro.vercel.app/`
           }));
         }
       } catch (e) {}

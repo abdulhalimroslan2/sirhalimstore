@@ -18,7 +18,7 @@ class SirHalimStoreApp {
         category: "Perisian & Automasi Guru",
         badge: "EDISI 2026 / POPULAR",
         engineType: "cids",
-        portalUrl: "https://cidskey.vercel.app/",
+        portalUrl: "https://cidspro.vercel.app/",
         filesIncluded: [
           "Lesen Kunci Digital 1 Tahun (Sah untuk 2 Peranti Komputer/Laptop)",
           "Akses Penuh CIDS Suites Pro Versi Terkini 2026",
@@ -299,7 +299,7 @@ class SirHalimStoreApp {
     // Link directly with embedded license key
     let portalUrl = keyRecord.portalUrl || "https://kertas22026.vercel.app/";
     if (keyRecord.productType === "cids" || (order.productId === "cids-suites-pro")) {
-      portalUrl = "https://cidskey.vercel.app/";
+      portalUrl = "https://cidspro.vercel.app/";
     } else if (!portalUrl.includes("?key=")) {
       portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(keyRecord.key)}`;
     }
@@ -422,7 +422,7 @@ class SirHalimStoreApp {
         if (container) {
           if (results && results.length > 0) {
             container.innerHTML = results.map(r => {
-              const portalUrl = r.portalUrl || (r.productType === "cids" ? "https://cidskey.vercel.app/" : `https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}`);
+              const portalUrl = r.portalUrl || (r.productType === "cids" ? "https://cidspro.vercel.app/" : `https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}`);
               const badgeLabel = r.productType === "cids" ? "CIDS Suites Pro (1 Tahun)" : "Fizik Kertas 2 2026";
               return `
               <div class="license-item-result">
