@@ -320,7 +320,7 @@ class SirHalimStoreApp {
   copyLicenseKey() {
     if (!this.lastAssignedKey || !this.lastAssignedKey.key) return;
     navigator.clipboard.writeText(this.lastAssignedKey.key).then(() => {
-      this.showToast("✅ Kod lesen digital berjaya disalin!");
+      this.showToast("Kod lesen digital berjaya disalin!");
     }).catch(() => {
       this.showToast("Sila salin kod secara manual.", "warning");
     });
@@ -331,13 +331,13 @@ class SirHalimStoreApp {
     const phone = this.lastOrderData.customerPhone.replace(/[^0-9]/g, "");
     const text = encodeURIComponent(
       `*RESIT PEMBELIAN & KOD LESEN SIR HALIM STORE*\n\n` +
-      `👤 Pembeli: ${this.lastOrderData.customerName}\n` +
-      `📦 Produk: ${this.currentProduct.title}\n` +
-      `🧾 No. Pesanan: ${this.lastOrderData.orderId}\n` +
-      `💳 ToyyibPay Bill: ${this.lastOrderData.billCode}\n` +
-      `💰 Jumlah Bayaran: RM ${this.currentProduct.price}\n\n` +
-      `🔑 *KOD LESEN ANDA:* \n*${this.lastAssignedKey.key}*\n\n` +
-      `📥 *Pautan Portal Muat Turun:* \nhttps://kertas2admin.vercel.app/?key=${this.lastAssignedKey.key}\n\n` +
+      `Pembeli: ${this.lastOrderData.customerName}\n` +
+      `Produk: ${this.currentProduct.title}\n` +
+      `No. Pesanan: ${this.lastOrderData.orderId}\n` +
+      `ToyyibPay Bill: ${this.lastOrderData.billCode}\n` +
+      `Jumlah Bayaran: RM ${this.currentProduct.price}\n\n` +
+      `*KOD LESEN ANDA:* \n*${this.lastAssignedKey.key}*\n\n` +
+      `*Pautan Portal Muat Turun:* \nhttps://kertas2admin.vercel.app/?key=${this.lastAssignedKey.key}\n\n` +
       `_Simpan mesej ini untuk rekod rujukan anda._`
     );
 

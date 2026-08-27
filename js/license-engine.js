@@ -85,7 +85,7 @@ class LicenseEngine {
 
           if (!updateErr && updatedKey && updatedKey.length > 0) {
             assignedKeyRecord = updatedKey[0];
-            console.log("✅ Berjaya Claim Kunci Sedia Ada:", assignedKeyRecord.key);
+            console.log("[Supabase] Berjaya Claim Kunci Sedia Ada:", assignedKeyRecord.key);
           }
         }
       } catch (err) {
@@ -115,7 +115,7 @@ class LicenseEngine {
 
           if (!insertErr && inserted && inserted.length > 0) {
             assignedKeyRecord = inserted[0];
-            console.log("✅ Berjaya Jana & Simpan Kunci Baharu ke Supabase:", assignedKeyRecord.key);
+            console.log("[Supabase] Berjaya Jana & Simpan Kunci Baharu:", assignedKeyRecord.key);
           }
         } catch (e) {
           console.warn("Error inserting new key to Supabase:", e);

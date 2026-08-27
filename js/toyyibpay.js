@@ -90,7 +90,7 @@ class ToyyibPayManager {
         const result = await response.json();
         if (Array.isArray(result) && result[0] && result[0].BillCode) {
           const liveBillCode = result[0].BillCode;
-          console.log("🟢 Live ToyyibPay Bill Berjaya Dijana:", liveBillCode);
+          console.log("[ToyyibPay] Live Bill Berjaya Dijana:", liveBillCode);
           return {
             success: true,
             billCode: liveBillCode,
