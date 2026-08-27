@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Apple Store Online - Sir Halim Store (MY)</title>
-  <meta name="description" content="Everything you love about an Apple Store is online. Shop PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026, iPhone, Mac, iPad, and accessories with instant ToyyibPay digital delivery.">
+  <meta name="description" content="Official Sir Halim Store. Shop CIDS Suites Pro (Lesen 1 Tahun) & PDF Fizik SPM Percubaan Kertas 2 2026 with instant ToyyibPay digital delivery and automatic Supabase key generation.">
   
   <!-- Apple Store CSS (100% Exact Layout - Zero Emojis, Pure SVG) -->
   <link rel="stylesheet" href="css/apple-store.css">
@@ -29,9 +29,9 @@
           </a>
         </li>
         <li class="globalnav-item"><a href="#store">Store</a></li>
-        <li class="globalnav-item"><a href="#featured">Kertas 1</a></li>
-        <li class="globalnav-item"><a href="#featured">Kertas 2</a></li>
-        <li class="globalnav-item"><a href="#featured">Kertas 3</a></li>
+        <li class="globalnav-item"><a href="#featured" data-action="open-buy-sheet" data-product="cids-suites-pro">CIDS Pro</a></li>
+        <li class="globalnav-item"><a href="#featured" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Kertas 2</a></li>
+        <li class="globalnav-item"><a href="#featured">Kertas 1 & 3</a></li>
         <li class="globalnav-item"><a href="#featured">Skema SPM</a></li>
         <li class="globalnav-item"><a href="https://kertas22026.vercel.app/" target="_blank">Portal Lesen</a></li>
         <li class="globalnav-item"><a href="#help">Sokongan</a></li>
@@ -43,7 +43,7 @@
           </a>
         </li>
         <li class="globalnav-item">
-          <a href="#" data-action="open-buy-sheet" aria-label="Shopping Bag">
+          <a href="#" data-action="open-buy-sheet" data-product="cids-suites-pro" aria-label="Shopping Bag">
             <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
               <path d="m11.3535 16.0283h-1.0205a3.4229 3.4229 0 0 0 -3.333-2.9648 3.4229 3.4229 0 0 0 -3.333 2.9648h-1.02a2.1184 2.1184 0 0 0 -2.117 2.1162v7.7155a2.1186 2.1186 0 0 0 2.1162 2.1167h8.707a2.1186 2.1186 0 0 0 2.1168-2.1167v-7.7155a2.1184 2.1184 0 0 0 -2.1165-2.1162zm-4.3535-1.8652a2.3169 2.3169 0 0 1 2.2222 1.8652h-4.4444a2.3169 2.3169 0 0 1 2.2222-1.8652zm5.37 11.6969a1.0182 1.0182 0 0 1 -1.0166 1.0171h-8.7069a1.0182 1.0182 0 0 1 -1.0165-1.0171v-7.7155a1.0182 1.0182 0 0 1 1.0165-1.0166h8.7069a1.0182 1.0182 0 0 1 1.0166 1.0166z"/>
             </svg>
@@ -58,9 +58,9 @@
        ========================================================================== -->
   <aside class="ribbon-banner">
     <div class="ribbon-content">
-      <span>Dapatkan <strong>E-Book Fizik Percubaan SPM Kertas 2 2026</strong> lengkap dengan skema pemarkahan & sistem lesen digital automatik.</span>
-      <a href="#" class="ribbon-link" data-action="open-buy-sheet">
-        Beli Sekarang
+      <span>Dapatkan <strong>CIDS Suites Pro (Lesen 1 Tahun)</strong> & <strong>E-Book Fizik SPM 2026</strong> dengan kunci lesen automatik.</span>
+      <a href="#" class="ribbon-link" data-action="open-buy-sheet" data-product="cids-suites-pro">
+        Beli CIDS Pro
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px;">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="12" y1="8" x2="12" y2="16"></line>
@@ -84,7 +84,7 @@
           The best way to buy the<br>products you love.
         </div>
         <div class="hero-links">
-          <a href="https://wa.me/60123456789?text=Salam%20Sir%20Halim,%20saya%20berminat%20dengan%20E-Book%20Fizik%20Kertas%202%202026." target="_blank" class="hero-link-item">
+          <a href="https://wa.me/60123456789?text=Salam%20Sir%20Halim,%20saya%20berminat%20dengan%20CIDS%20Suites%20Pro%20atau%20Modul%20Fizik." target="_blank" class="hero-link-item">
             Connect with a Specialist
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -104,52 +104,44 @@
   </section>
 
   <!-- ==========================================================================
-       4. CATEGORY ICON STRIP (PRODUCT SELECTOR - NO EMOJIS, APPLE ASSETS)
+       4. CATEGORY ICON STRIP (PRODUCT SELECTOR)
        ========================================================================== -->
   <section class="category-strip-section container-wide">
     <div class="category-scroll-container">
       
-      <!-- Mac / Fizik Kertas 2 -->
-      <a href="#featured" class="category-card" data-action="open-buy-sheet">
+      <!-- CIDS Suites Pro -->
+      <a href="#featured" class="category-card" data-action="open-buy-sheet" data-product="cids-suites-pro">
         <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-mac-202410.png" alt="Mac" class="category-thumb-img">
+          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-mac-202410.png" alt="CIDS Pro" class="category-thumb-img">
+        </div>
+        <span class="category-name">CIDS Suites Pro</span>
+      </a>
+
+      <!-- Fizik Kertas 2 -->
+      <a href="#featured" class="category-card" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">
+        <div class="category-thumb-box">
+          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-ipad-202405.png" alt="Fizik" class="category-thumb-img">
         </div>
         <span class="category-name">Fizik Kertas 2</span>
       </a>
 
-      <!-- iPhone / Tingkatan 5 -->
-      <a href="#featured" class="category-card" data-action="open-detail-sheet">
+      <!-- Tingkatan 5 -->
+      <a href="#featured" class="category-card" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">
         <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-iphone-202409.png" alt="iPhone" class="category-thumb-img">
+          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-iphone-202409.png" alt="Tingkatan 5" class="category-thumb-img">
         </div>
         <span class="category-name">Tingkatan 5</span>
       </a>
 
-      <!-- iPad / Skema Jawapan -->
-      <a href="#featured" class="category-card" data-action="open-detail-sheet">
+      <!-- Skema Jawapan -->
+      <a href="#featured" class="category-card" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">
         <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-ipad-202405.png" alt="iPad" class="category-thumb-img">
+          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-accessories-202409.png" alt="Skema" class="category-thumb-img">
         </div>
         <span class="category-name">Skema Jawapan</span>
       </a>
 
-      <!-- Watch / Koleksi Trial -->
-      <a href="#featured" class="category-card" data-action="open-buy-sheet">
-        <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-watch-202409.png" alt="Watch" class="category-thumb-img">
-        </div>
-        <span class="category-name">Koleksi Trial</span>
-      </a>
-
-      <!-- AirPods / Tingkatan 4 -->
-      <a href="#featured" class="category-card">
-        <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-airpods-202409.png" alt="AirPods" class="category-thumb-img">
-        </div>
-        <span class="category-name">Tingkatan 4</span>
-      </a>
-
-      <!-- AirTag / Semak Lesen -->
+      <!-- Semak Lesen -->
       <a href="#" class="category-card" data-action="open-license-checker">
         <div class="category-thumb-box">
           <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-airtag-202104.png" alt="AirTag" class="category-thumb-img">
@@ -157,28 +149,20 @@
         <span class="category-name">Semak Lesen</span>
       </a>
 
-      <!-- Apple TV 4K / Video Analisis -->
-      <a href="#experience" class="category-card">
+      <!-- Portal CIDS Pro -->
+      <a href="https://cidskey.vercel.app/" target="_blank" class="category-card">
         <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-appletv-202210.png" alt="Apple TV" class="category-thumb-img">
+          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-appletv-202210.png" alt="Portal CIDS" class="category-thumb-img">
         </div>
-        <span class="category-name">Video Analisis</span>
+        <span class="category-name">Portal CIDS</span>
       </a>
 
-      <!-- HomePod / Portal Download -->
+      <!-- Portal Fizik -->
       <a href="https://kertas22026.vercel.app/" target="_blank" class="category-card">
         <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-homepod-202301.png" alt="HomePod" class="category-thumb-img">
+          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-homepod-202301.png" alt="Portal Fizik" class="category-thumb-img">
         </div>
-        <span class="category-name">Portal Download</span>
-      </a>
-
-      <!-- Accessories / Pakej Lengkap -->
-      <a href="#features" class="category-card">
-        <div class="category-thumb-box">
-          <img src="https://store.storeimages.cdn-apple.com/8756/store.apple.com/shop/rs-merch-4.19.5-d1a23/dist/assets/homepage/nav-icon-accessories-202409.png" alt="Accessories" class="category-thumb-img">
-        </div>
-        <span class="category-name">Pakej Lengkap</span>
+        <span class="category-name">Portal Fizik</span>
       </a>
 
     </div>
@@ -195,11 +179,35 @@
     <div class="cards-carousel-container">
       <div class="cards-scroll-track" id="cardsCarousel">
 
-        <!-- CARD 1: FLAGSHIP ITEM (PDF FIZIK KERTAS 2 2026) -->
-        <div class="product-card" data-action="open-buy-sheet">
+        <!-- CARD 1: NEW PRODUCT - CIDS SUITES PRO (RM 19.99 / TAHUN) -->
+        <div class="product-card" data-action="open-buy-sheet" data-product="cids-suites-pro">
           <div class="card-top-info">
-            <div class="card-tag-red">PRE-ORDER / TERBARU 2026</div>
-            <h3 class="card-headline">PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026</h3>
+            <div class="card-tag-red">BARU / EDISI 2026</div>
+            <h3 class="card-headline">CIDS Suites Pro - Lesen 1 Tahun</h3>
+            <p class="card-subtext">Sistem Pengurusan RPH Pintar & Automasi Pendidikan. Sah untuk 2 Peranti Komputer/Laptop.</p>
+            <div class="card-pricing">From RM 19.99 / tahun</div>
+          </div>
+
+          <div class="card-image-stage">
+            <img src="assets/cids-suites-pro-cover.png" alt="CIDS Suites Pro" class="card-product-img" style="max-height: 250px; object-fit: contain;">
+          </div>
+
+          <div class="card-bottom-btn-row">
+            <button class="btn-buy-pill" data-action="open-buy-sheet" data-product="cids-suites-pro">Beli Lesen (RM 19.99)</button>
+            <a href="#" class="card-text-link" data-action="open-detail-sheet" data-product="cids-suites-pro">
+              Ketahui Lanjut
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 2: PDF FIZIK KERTAS 2 2026 (RM 1.99) -->
+        <div class="product-card" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">
+          <div class="card-top-info">
+            <div class="card-tag-red">PRE-ORDER / TERLARIS 2026</div>
+            <h3 class="card-headline">PDF Fizik Koleksi Mirip Soalan Trial Kertas 2 2026</h3>
             <p class="card-subtext">Koleksi Soalan Terpilih Mengikut Topik, Jawapan Lengkap & Skema Analisis SPM 2026.</p>
             <div class="card-pricing">From RM 1.99</div>
           </div>
@@ -209,8 +217,8 @@
           </div>
 
           <div class="card-bottom-btn-row">
-            <button class="btn-buy-pill" data-action="open-buy-sheet">Beli Sekarang</button>
-            <a href="#" class="card-text-link" data-action="open-detail-sheet">
+            <button class="btn-buy-pill" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Beli E-Book (RM 1.99)</button>
+            <a href="#" class="card-text-link" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">
               Ketahui Lanjut
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -219,8 +227,8 @@
           </div>
         </div>
 
-        <!-- CARD 2: SKEMA JAWAPAN LENGKAP -->
-        <div class="product-card" data-action="open-detail-sheet">
+        <!-- CARD 3: SKEMA JAWAPAN LENGKAP -->
+        <div class="product-card" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">
           <div class="card-top-info">
             <div class="card-tag-red">PANDUAN PEMARKAHAN A+</div>
             <h3 class="card-headline">Skema & Analisis Jawapan Lengkap Kertas 2</h3>
@@ -239,8 +247,8 @@
           </div>
 
           <div class="card-bottom-btn-row">
-            <button class="btn-buy-pill" data-action="open-buy-sheet">Beli Sekarang</button>
-            <a href="#" class="card-text-link" data-action="open-detail-sheet">
+            <button class="btn-buy-pill" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Dapatkan Modul</button>
+            <a href="#" class="card-text-link" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">
               Lihat Contoh
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -249,13 +257,13 @@
           </div>
         </div>
 
-        <!-- CARD 3: AUTO LICENSE SYSTEM (BLACK CARD #000000) -->
+        <!-- CARD 4: AUTO LICENSE SYSTEM (BLACK CARD #000000) -->
         <div class="product-card card-dark" data-action="open-license-checker">
           <div class="card-top-info">
             <div class="card-tag-red">AKSES DIGITAL 24/7</div>
             <h3 class="card-headline">Sistem Kod Lesen Automatik</h3>
             <p class="card-subtext">Bayar melalui ToyyibPay FPX, sistem terus menyerahkan kod lesen serta-merta tanpa menunggu.</p>
-            <div class="card-pricing">From RM 1.99 or Instant Cloud Access</div>
+            <div class="card-pricing">CIDS Suites Pro & Fizik SPM</div>
           </div>
 
           <div class="card-image-stage">
@@ -264,45 +272,16 @@
                 <path d="M21 2l-2 2m-1.5 1.5L14 9a5 5 0 1 0 3 3l6-6v-4h-4v2h-2v2h-2z"></path>
                 <circle cx="7.5" cy="16.5" r="1.5"></circle>
               </svg>
-              <div style="font-family: var(--apple-font-mono); font-size: 20px; font-weight: 700; color: #34c759; background: rgba(255,255,255,0.08); padding: 8px 18px; border-radius: 8px;">
-                FZ26-XXXX-XXXX
+              <div style="font-family: var(--apple-font-mono); font-size: 18px; font-weight: 700; color: #34c759; background: rgba(255,255,255,0.08); padding: 8px 18px; border-radius: 8px;">
+                CIDS-XXXX-XXXX-XXXX
               </div>
             </div>
           </div>
 
           <div class="card-bottom-btn-row">
-            <button class="btn-buy-pill btn-pill-white" data-action="open-buy-sheet">Dapatkan Lesen</button>
+            <button class="btn-buy-pill btn-pill-white" data-action="open-buy-sheet" data-product="cids-suites-pro">Dapatkan Lesen</button>
             <a href="#" class="card-text-link" style="color: #2997ff;" data-action="open-license-checker">
               Semak Lesen
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- CARD 4: BIMBINGAN KHAS SIR HALIM -->
-        <div class="product-card">
-          <div class="card-top-info">
-            <div class="card-tag-red">SOKONGAN GURU</div>
-            <h3 class="card-headline">Bimbingan Fizik SPM Sir Halim</h3>
-            <p class="card-subtext">Saluran direct chat WhatsApp untuk membimbing pelajar memahami konsep fizik sukar.</p>
-            <div class="card-pricing">Sokongan Mesra Murid & Guru</div>
-          </div>
-
-          <div class="card-image-stage">
-            <svg width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              <circle cx="12" cy="10" r="1" fill="#25d366"></circle>
-              <circle cx="8" cy="10" r="1" fill="#25d366"></circle>
-              <circle cx="16" cy="10" r="1" fill="#25d366"></circle>
-            </svg>
-          </div>
-
-          <div class="card-bottom-btn-row">
-            <a href="https://wa.me/60123456789" target="_blank" class="btn-buy-pill" style="background: #25d366;">Chat WhatsApp</a>
-            <a href="#help" class="card-text-link">
-              Maklumat Lanjut
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
@@ -315,7 +294,7 @@
   </section>
 
   <!-- ==========================================================================
-       6. "HELP IS HERE." SECTION (NO EMOJIS, PURE APPLE VECTOR SVG)
+       6. "HELP IS HERE." SECTION (PURE APPLE VECTOR SVG)
        ========================================================================== -->
   <section class="help-section container-wide" id="help">
     <div class="section-headline-group">
@@ -326,7 +305,7 @@
       <!-- Help 1 -->
       <div class="help-card-item">
         <div>
-          <div class="help-eyebrow">APPLE SPECIALIST / GURU FIZIK</div>
+          <div class="help-eyebrow">APPLE SPECIALIST / SIR HALIM</div>
           <h3 class="help-card-title">Shop one on one with a Specialist. Online or in a chat.</h3>
         </div>
         <div class="help-media-container">
@@ -356,7 +335,7 @@
           </svg>
         </div>
         <div>
-          <a href="#featured" class="btn-buy-pill btn-pill-white" data-action="open-buy-sheet">Dapatkan Modul</a>
+          <a href="#featured" class="btn-buy-pill btn-pill-white" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Dapatkan Modul</a>
         </div>
       </div>
 
@@ -365,7 +344,7 @@
         <div>
           <div class="help-eyebrow">PERSONAL SETUP</div>
           <h3 class="help-card-title">Set up your digital license with instant portal access.</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Let us guide you through license activation and downloading the complete questions and answers.</p>
+          <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Let us guide you through license activation and downloading your products.</p>
         </div>
         <div class="help-media-container">
           <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -374,8 +353,8 @@
           </svg>
         </div>
         <div>
-          <a href="https://kertas22026.vercel.app/" target="_blank" class="btn-buy-pill">
-            Buka Portal Muat Turun
+          <a href="https://cidskey.vercel.app/" target="_blank" class="btn-buy-pill">
+            Buka Portal CIDS Suites Pro
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
@@ -403,7 +382,7 @@
         </div>
         <div class="diff-card-text">
           Instant digital delivery, get your license key right after payment.
-          <span class="blue-link" data-action="open-buy-sheet">
+          <span class="blue-link" data-action="open-buy-sheet" data-product="cids-suites-pro">
             Buy now
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
               <polyline points="9 18 15 12 9 6"></polyline>
@@ -422,7 +401,7 @@
         </div>
         <div class="diff-card-text">
           Pay securely with ToyyibPay FPX from all major Malaysian banks.
-          <span class="blue-link" data-action="open-buy-sheet">
+          <span class="blue-link" data-action="open-buy-sheet" data-product="cids-suites-pro">
             Learn more
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
               <polyline points="9 18 15 12 9 6"></polyline>
@@ -431,7 +410,7 @@
         </div>
       </div>
 
-      <!-- Diff 3: 100% SPM Standard -->
+      <!-- Diff 3: 100% CIDS & SPM Standard -->
       <div class="diff-card-item">
         <div class="diff-icon-wrap">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#af52de" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -441,9 +420,9 @@
           </svg>
         </div>
         <div class="diff-card-text">
-          100% SPM 2026 Examination Standard by Lembaga Peperiksaan.
-          <span class="blue-link" data-action="open-detail-sheet">
-            View topics
+          100% Original CIDS Suites Pro & SPM 2026 Examination Standard.
+          <span class="blue-link" data-action="open-detail-sheet" data-product="cids-suites-pro">
+            View details
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
@@ -451,7 +430,7 @@
         </div>
       </div>
 
-      <!-- Diff 4: Clean Vector PDF -->
+      <!-- Diff 4: Clean Vector PDF & Software -->
       <div class="diff-card-item">
         <div class="diff-icon-wrap">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -460,8 +439,8 @@
           </svg>
         </div>
         <div class="diff-card-text">
-          HD Vector Clean PDF, perfectly optimized for tablet and print.
-          <span class="blue-link" data-action="open-detail-sheet">
+          Instant Key Activation for 2 Devices with 1-Year Full Cloud Support.
+          <span class="blue-link" data-action="open-detail-sheet" data-product="cids-suites-pro">
             Explore
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
               <polyline points="9 18 15 12 9 6"></polyline>
@@ -478,7 +457,7 @@
           </svg>
         </div>
         <div class="diff-card-text">
-          Get a personalized learning experience with direct teacher support.
+          Get a personalized support experience directly with Sir Halim.
           <span class="blue-link"><a href="https://wa.me/60123456789" target="_blank" style="color: var(--apple-blue);">
             Chat now
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
@@ -491,9 +470,9 @@
   </section>
 
   <!-- ==========================================================================
-       8. FLOATING SPECIALIST CHAT BUTTON (BOTTOM RIGHT - VECTOR SVG)
+       8. FLOATING SPECIALIST CHAT BUTTON (BOTTOM RIGHT)
        ========================================================================== -->
-  <a href="https://wa.me/60123456789?text=Salam%20Sir%20Halim,%20saya%20berminat%20dengan%20E-Book%20Fizik%20Kertas%202%202026." target="_blank" class="floating-specialist-btn" title="Chat with Sir Halim on WhatsApp">
+  <a href="https://wa.me/60123456789?text=Salam%20Sir%20Halim,%20saya%20berminat%20dengan%20CIDS%20Suites%20Pro%20atau%20Modul%20Fizik." target="_blank" class="floating-specialist-btn" title="Chat with Sir Halim on WhatsApp">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     </svg>
@@ -501,7 +480,7 @@
   </a>
 
   <!-- ==========================================================================
-       9. APPLE BUY SHEET / CHECKOUT MODAL
+       9. APPLE BUY SHEET / CHECKOUT MODAL (DYNAMIC)
        ========================================================================== -->
   <div class="modal-backdrop" id="appleBuySheetModal">
     <div class="apple-modal">
@@ -512,18 +491,18 @@
 
       <div class="modal-body">
         <div style="display: flex; gap: 16px; align-items: center; background: #f5f5f7; padding: 14px 18px; border-radius: 14px; margin-bottom: 20px;">
-          <img src="assets/fizik-kertas2-2026-cover.png" alt="Cover" style="width: 60px; height: 80px; object-fit: cover; border-radius: 6px;">
+          <img src="assets/cids-suites-pro-cover.png" alt="Cover" style="width: 60px; height: 80px; object-fit: cover; border-radius: 6px;">
           <div>
-            <div style="font-weight: 700; font-size: 15px;">PDF Fizik Koleksi Mirip Soalan Trial Kertas 2 2026</div>
-            <div style="font-size: 13px; color: var(--text-muted);">Pakej Lengkap E-Book + Skema A+ + Kunci Lesen Automatik</div>
-            <div style="font-size: 17px; font-weight: 700; color: var(--apple-blue); margin-top: 4px;">RM 1.99</div>
+            <div id="buySheetTitle" class="modal-product-title" style="font-weight: 700; font-size: 15px;">CIDS Suites Pro (Lesen 1 Tahun / 2 Peranti)</div>
+            <div id="buySheetSubtitle" class="modal-product-sub" style="font-size: 13px; color: var(--text-muted);">Sistem Pengurusan RPH Pintar & Automasi Pendidikan</div>
+            <div id="buySheetPrice" class="modal-product-price" style="font-size: 17px; font-weight: 700; color: var(--apple-blue); margin-top: 4px;">RM 19.99</div>
           </div>
         </div>
 
         <form id="appleCheckoutForm">
           <div class="form-group">
             <label class="form-label" for="buyerNameInput">Nama Penuh</label>
-            <input type="text" id="buyerNameInput" class="form-input" placeholder="cth: Ahmad Dani bin Razak" required>
+            <input type="text" id="buyerNameInput" class="form-input" placeholder="cth: Cikgu Ahmad Dani" required>
           </div>
 
           <div class="form-row-2">
@@ -550,7 +529,7 @@
           </div>
 
           <button type="submit" class="btn-checkout-primary" id="payWithToyyibPayBtn">
-            <span>Bayar Sekarang (RM 1.99)</span>
+            <span>Bayar Sekarang (RM 19.99)</span>
           </button>
         </form>
       </div>
@@ -580,7 +559,7 @@
 
         <div class="license-box-display">
           <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #86868b;">KOD LESEN DIGITAL ANDA</div>
-          <div class="license-key-code" id="receiptKeyCode">FZ26-XXXX-XXXX</div>
+          <div class="license-key-code" id="receiptKeyCode">CIDS-XXXX-XXXX-XXXX</div>
           <button type="button" class="btn-buy-pill btn-pill-white" id="receiptCopyKeyBtn" style="padding: 6px 16px; font-size: 13px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -601,18 +580,18 @@
           </div>
           <div style="display: flex; justify-content: space-between;">
             <span style="color: var(--text-muted);">Jumlah Bayaran:</span>
-            <span style="font-weight: 700; color: var(--apple-blue);">RM 1.99 (Lunas)</span>
+            <span style="font-weight: 700; color: var(--apple-blue);" id="receiptAmountPaid">RM 19.99 (Lunas)</span>
           </div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 10px;">
-          <a href="https://kertas22026.vercel.app/" target="_blank" class="btn-checkout-primary" id="receiptDownloadPortalBtn">
+          <a href="https://cidskey.vercel.app/" target="_blank" class="btn-checkout-primary" id="receiptDownloadPortalBtn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Buka Portal Muat Turun Sekarang
+            Buka Portal Muat Turun Sekarang &rsaquo;
           </a>
           <button type="button" class="btn-buy-pill" id="receiptWhatsAppBtn" style="background: #25d366; width: 100%; justify-content: center; padding: 12px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -627,7 +606,7 @@
 
   <!-- ==========================================================================
        11. LICENSE CHECKER MODAL
-       ========================================================================== -->
+       ========================================================================= -->
   <div class="modal-backdrop" id="licenseCheckerModal">
     <div class="apple-modal">
       <div class="modal-header">
@@ -637,11 +616,11 @@
 
       <div class="modal-body">
         <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
-          Masukkan no. telefon, emel, atau kod lesen anda untuk menyemak rekod pembelian daripada pangkalan data Supabase.
+          Masukkan no. telefon, emel, atau kod lesen anda untuk menyemak rekod pembelian CIDS Suites Pro atau Modul Fizik daripada pangkalan data Supabase.
         </p>
 
         <form id="searchLicenseForm" style="display: flex; gap: 10px; margin-bottom: 20px;">
-          <input type="text" id="licenseSearchQuery" class="form-input" placeholder="cth: 0123456789 atau ahmad@gmail.com" required>
+          <input type="text" id="licenseSearchQuery" class="form-input" placeholder="cth: 0123456789 atau CIDS-..." required>
           <button type="submit" class="btn-buy-pill" style="white-space: nowrap;">Cari</button>
         </form>
 
@@ -656,14 +635,14 @@
   <div class="modal-backdrop" id="productDetailModal">
     <div class="apple-modal">
       <div class="modal-header">
-        <h3 class="modal-title">Perincian Modul Fizik Percubaan 2026</h3>
+        <h3 class="modal-title">Perincian Produk</h3>
         <button class="modal-close-btn" data-close-modal>&times;</button>
       </div>
 
       <div class="modal-body">
         <div style="text-align: center; margin-bottom: 20px;">
-          <img src="assets/fizik-kertas2-2026-cover.png" alt="Cover" style="max-height: 180px; margin: 0 auto 12px; border-radius: 8px; box-shadow: var(--shadow-card);">
-          <h4 style="font-size: 18px; font-weight: 700;">PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026</h4>
+          <img src="assets/cids-suites-pro-cover.png" alt="Cover" style="max-height: 180px; margin: 0 auto 12px; border-radius: 8px; box-shadow: var(--shadow-card); object-fit: contain;">
+          <h4 style="font-size: 18px; font-weight: 700;">CIDS Suites Pro (Lesen 1 Tahun / 2 Peranti)</h4>
         </div>
 
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px; margin-bottom: 20px;">
@@ -671,31 +650,31 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Soalan Topikal Kertas 2:</strong> Tingkatan 4 & Tingkatan 5 mengikut format SPM terkini.</span>
+            <span><strong>Lesen 1 Tahun:</strong> Sah aktif selama 365 hari untuk kegunaan 2 peranti komputer/laptop.</span>
           </li>
           <li style="display: flex; gap: 8px; align-items: flex-start;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Skema Analisis Lengkap:</strong> Rubrik pemarkahan, tip skor A+, formula dan jalan kerja.</span>
+            <span><strong>Automasi RPH Pintar:</strong> Penulisan RPH pantas, import jadual, DSKP bersepadu & Cloud Sync.</span>
           </li>
           <li style="display: flex; gap: 8px; align-items: flex-start;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Lesen Akses Digital:</strong> Had muat turun 4 kali (2x Soalan + 2x Skema).</span>
+            <span><strong>Penyerahan Kunci Automatik:</strong> Kod lesen dikeluarkan secara automatik serta-merta selepas bayaran ToyyibPay.</span>
           </li>
         </ul>
 
-        <button class="btn-checkout-primary" data-action="open-buy-sheet" data-close-modal>
-          Beli Sekarang (RM 1.99)
+        <button class="btn-checkout-primary" data-action="open-buy-sheet" data-product="cids-suites-pro" data-close-modal>
+          Beli Sekarang (RM 19.99)
         </button>
       </div>
     </div>
   </div>
 
   <!-- ==========================================================================
-       13. FOOTER (100% APPLE STORE FOOTER)
+       13. FOOTER
        ========================================================================== -->
   <footer class="apple-footer">
     <div class="container-wide">
@@ -703,24 +682,24 @@
         <div class="footer-col">
           <h4>Shop and Learn</h4>
           <ul>
-            <li><a href="#featured">Fizik Kertas 2 2026</a></li>
+            <li><a href="#featured" data-action="open-buy-sheet" data-product="cids-suites-pro">CIDS Suites Pro (1 Tahun)</a></li>
+            <li><a href="#featured" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Fizik Kertas 2 2026</a></li>
             <li><a href="#featured">Skema Jawapan A+</a></li>
-            <li><a href="#featured">Koleksi Trial Negeri</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Account & License</h4>
           <ul>
             <li><a href="#" data-action="open-license-checker">Check License Key</a></li>
-            <li><a href="https://kertas22026.vercel.app/" target="_blank">Download Portal</a></li>
-            <li><a href="#" data-action="open-buy-sheet">Order E-Book</a></li>
+            <li><a href="https://cidskey.vercel.app/" target="_blank">Portal CIDS Suites Pro</a></li>
+            <li><a href="https://kertas22026.vercel.app/" target="_blank">Portal Fizik SPM 2026</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Entertainment</h4>
+          <h4>Admin Portals</h4>
           <ul>
-            <li><a href="#experience">Apple Intelligence</a></li>
-            <li><a href="#help">Support & Coaching</a></li>
+            <li><a href="https://cidskey.vercel.app/admin" target="_blank">CIDS Key Admin</a></li>
+            <li><a href="https://kertas2admin.vercel.app/" target="_blank">Fizik Key Admin</a></li>
           </ul>
         </div>
         <div class="footer-col">

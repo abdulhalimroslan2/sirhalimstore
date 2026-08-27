@@ -1,27 +1,51 @@
 /**
- * SIR HALIM STORE - MAIN CLIENT APPLICATION
- * Apple Store Inspired Interactive Interface & Checkout Workflow
+ * SIR HALIM STORE - MULTI-PRODUCT CLIENT APPLICATION
+ * Features:
+ * 1. CIDS Suites Pro (Lesen 1 Tahun / 2 Peranti) - RM 19.99
+ * 2. PDF Fizik SPM Percubaan Kertas 2 2026 - RM 1.99
  */
 
 class SirHalimStoreApp {
   constructor() {
-    this.currentProduct = {
-      id: "fizik-kertas2-2026",
-      title: "PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026",
-      subtitle: "Koleksi Soalan Terpilih Mengikut Topik, Jawapan Lengkap & Skema Analisis SPM 2026",
-      price: 1.99,
-      formattedPrice: "RM 1.99",
-      coverImage: "assets/fizik-kertas2-2026-cover.png",
-      category: "Fizik SPM Tingkatan 4 & 5",
-      badge: "Paling Laris & Eksklusif",
-      filesIncluded: [
-        "E-Book PDF Soalan Kertas 2 Topikal Percubaan 2026 (4.7 MB)",
-        "Skema & Analisis Jawapan Lengkap Kertas 2 (4.0 MB)",
-        "Kunci Lesen Digital Automatik (Had Muat Turun 4x)"
-      ]
+    this.products = {
+      "cids-suites-pro": {
+        id: "cids-suites-pro",
+        title: "CIDS Suites Pro (Lesen 1 Tahun / 2 Peranti)",
+        subtitle: "Sistem Pengurusan RPH Pintar & Automasi Pendidikan CIDS Suites Pro Versi 2026. Sah untuk 1 Tahun.",
+        price: 19.99,
+        formattedPrice: "RM 19.99",
+        coverImage: "assets/cids-suites-pro-cover.png",
+        category: "Perisian & Automasi Guru",
+        badge: "EDISI 2026 / POPULAR",
+        engineType: "cids",
+        portalUrl: "https://cidskey.vercel.app/",
+        filesIncluded: [
+          "Lesen Kunci Digital 1 Tahun (Sah untuk 2 Peranti Komputer/Laptop)",
+          "Akses Penuh CIDS Suites Pro Versi Terkini 2026",
+          "Sokongan Kemas Kini Automatik & Cloud Sync"
+        ]
+      },
+      "fizik-kertas2-2026": {
+        id: "fizik-kertas2-2026",
+        title: "PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026",
+        subtitle: "Koleksi Soalan Terpilih Mengikut Topik, Jawapan Lengkap & Skema Analisis SPM 2026",
+        price: 1.99,
+        formattedPrice: "RM 1.99",
+        coverImage: "assets/fizik-kertas2-2026-cover.png",
+        category: "Fizik SPM Tingkatan 4 & 5",
+        badge: "Paling Laris & Eksklusif",
+        engineType: "fizik",
+        portalUrl: "https://kertas22026.vercel.app/",
+        filesIncluded: [
+          "E-Book PDF Soalan Kertas 2 Topikal Percubaan 2026 (4.7 MB)",
+          "Skema & Analisis Jawapan Lengkap Kertas 2 (4.0 MB)",
+          "Kunci Lesen Digital Automatik (Had Muat Turun 4x)"
+        ]
+      }
     };
 
-    this.cart = [];
+    // Default active product
+    this.currentProduct = this.products["cids-suites-pro"];
     this.lastAssignedKey = null;
     this.lastOrderData = null;
 
@@ -32,7 +56,7 @@ class SirHalimStoreApp {
     this.bindEvents();
     this.initCarousel();
     this.checkUrlParams();
-    console.log("🍏 Sir Halim Store App Initialized.");
+    console.log("🍏 Sir Halim Store App Initialized with Multi-Product Suite.");
   }
 
   bindEvents() {
@@ -40,7 +64,8 @@ class SirHalimStoreApp {
     document.querySelectorAll("[data-action='open-buy-sheet']").forEach(btn => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        this.openBuySheet();
+        const productId = btn.getAttribute("data-product") || "cids-suites-pro";
+        this.openBuySheet(productId);
       });
     });
 
@@ -48,7 +73,8 @@ class SirHalimStoreApp {
     document.querySelectorAll("[data-action='open-detail-sheet']").forEach(btn => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        this.openDetailSheet();
+        const productId = btn.getAttribute("data-product") || "cids-suites-pro";
+        this.openDetailSheet(productId);
       });
     });
 
@@ -59,15 +85,6 @@ class SirHalimStoreApp {
         this.openLicenseChecker();
       });
     });
-
-    // Admin Settings / Key Vault
-    const adminTrigger = document.getElementById("openAdminSettingsBtn");
-    if (adminTrigger) {
-      adminTrigger.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.promptAdminPin();
-      });
-    }
 
     // Modal Close buttons
     document.querySelectorAll("[data-close-modal]").forEach(btn => {
@@ -115,28 +132,6 @@ class SirHalimStoreApp {
         this.handleLicenseSearch();
       });
     }
-
-    // ToyyibPay Mode Chips
-    document.querySelectorAll(".mode-chip").forEach(chip => {
-      chip.addEventListener("click", (e) => {
-        document.querySelectorAll(".mode-chip").forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        const env = chip.getAttribute("data-env");
-        if (window.toyyibPayManager) {
-          window.toyyibPayManager.setEnvironment(env);
-          this.showToast(`Mod ToyyibPay ditukar kepada: ${env.toUpperCase()}`);
-        }
-      });
-    });
-
-    // Shopping Bag Icon
-    const bagBtn = document.getElementById("navBagBtn");
-    if (bagBtn) {
-      bagBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.openBuySheet();
-      });
-    }
   }
 
   // ==========================================
@@ -144,46 +139,48 @@ class SirHalimStoreApp {
   // ==========================================
   initCarousel() {
     const carousel = document.getElementById("cardsCarousel");
-    const prevBtn = document.getElementById("carouselPrevBtn");
-    const nextBtn = document.getElementById("carouselNextBtn");
-
-    if (!carousel || !prevBtn || !nextBtn) return;
-
-    const scrollAmount = 420;
-
-    nextBtn.addEventListener("click", () => {
-      carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    });
-
-    prevBtn.addEventListener("click", () => {
-      carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    });
-
-    const updateArrowStates = () => {
-      prevBtn.disabled = carousel.scrollLeft <= 10;
-      nextBtn.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
-    };
-
-    carousel.addEventListener("scroll", updateArrowStates);
-    updateArrowStates();
+    if (!carousel) return;
   }
 
   // ==========================================
   // BUY SHEET & CHECKOUT FLOW
   // ==========================================
-  openBuySheet() {
+  openBuySheet(productId = "cids-suites-pro") {
+    const product = this.products[productId] || this.products["cids-suites-pro"];
+    this.currentProduct = product;
+
+    // Update modal UI elements
     const modal = document.getElementById("appleBuySheetModal");
+    const imgEl = modal ? modal.querySelector("img[alt='Cover']") : null;
+    const titleEl = modal ? modal.querySelector("#buySheetTitle") || modal.querySelector(".modal-product-title") : null;
+    const subEl = modal ? modal.querySelector("#buySheetSubtitle") || modal.querySelector(".modal-product-sub") : null;
+    const priceEl = modal ? modal.querySelector("#buySheetPrice") || modal.querySelector(".modal-product-price") : null;
+    const btnSpan = document.getElementById("payWithToyyibPayBtn");
+
+    if (imgEl) imgEl.src = product.coverImage;
+    if (titleEl) titleEl.innerText = product.title;
+    if (subEl) subEl.innerText = product.subtitle;
+    if (priceEl) priceEl.innerText = product.formattedPrice;
+    if (btnSpan) btnSpan.innerHTML = `<span>Bayar Sekarang (${product.formattedPrice})</span>`;
+
     if (modal) {
       modal.classList.add("active");
       const nameInput = document.getElementById("buyerNameInput");
-      if (nameInput) {
-        setTimeout(() => nameInput.focus(), 200);
-      }
+      if (nameInput) setTimeout(() => nameInput.focus(), 200);
     }
   }
 
-  openDetailSheet() {
+  openDetailSheet(productId = "cids-suites-pro") {
+    const product = this.products[productId] || this.products["cids-suites-pro"];
+    this.currentProduct = product;
+
     const modal = document.getElementById("productDetailModal");
+    const imgEl = modal ? modal.querySelector("img[alt='Cover']") : null;
+    const titleEl = modal ? modal.querySelector("h4") : null;
+
+    if (imgEl) imgEl.src = product.coverImage;
+    if (titleEl) titleEl.innerText = product.title;
+
     if (modal) modal.classList.add("active");
   }
 
@@ -215,7 +212,7 @@ class SirHalimStoreApp {
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
-        <svg class="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
           <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
           <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
         </svg>
@@ -231,7 +228,9 @@ class SirHalimStoreApp {
       customerEmail: email,
       customerPhone: phone,
       amount: this.currentProduct.price,
-      productTitle: this.currentProduct.title
+      productTitle: this.currentProduct.title,
+      engineType: this.currentProduct.engineType,
+      productId: this.currentProduct.id
     };
 
     try {
@@ -241,37 +240,33 @@ class SirHalimStoreApp {
       const paymentResult = await window.toyyibPayManager.processPayment(orderPayload);
 
       if (paymentResult.success) {
-        // If live redirect URL returned, redirect user
         if (paymentResult.paymentUrl && !paymentResult.simulated) {
+          // Save pending state
+          sessionStorage.setItem("sirhalim_pending_order", JSON.stringify(orderPayload));
           window.location.href = paymentResult.paymentUrl;
           return;
         }
 
         // 2. Auto Claim / Pick up license key from Supabase Cloud
-        this.showToast("Pembayaran Berjaya! Menjana kunci lesen digital...", "success");
-
-        const assignedKeyRecord = await window.licenseEngine.autoClaimLicenseKey({
+        const keyRecord = await window.licenseEngine.autoClaimLicenseKey({
           name: name,
           email: email,
           phone: phone,
           orderId: orderId,
-          billCode: paymentResult.billCode
+          billCode: paymentResult.billCode || "SIM-" + Date.now(),
+          engineType: this.currentProduct.engineType
         });
 
-        this.lastAssignedKey = assignedKeyRecord;
+        this.lastAssignedKey = keyRecord;
         this.lastOrderData = {
           ...orderPayload,
-          billCode: paymentResult.billCode,
-          key: assignedKeyRecord.key,
-          date: new Date().toLocaleDateString("ms-MY", { dateStyle: "medium" }) + " " + new Date().toLocaleTimeString("ms-MY", { timeStyle: "short" })
+          billCode: paymentResult.billCode
         };
 
-        // Close Buy Sheet
         const buyModal = document.getElementById("appleBuySheetModal");
         if (buyModal) buyModal.classList.remove("active");
 
-        // Open Receipt Modal & Confetti
-        this.showOrderReceipt(this.lastOrderData, this.lastAssignedKey);
+        this.showOrderReceipt(this.lastOrderData, keyRecord);
         this.triggerConfetti();
       }
     } catch (err) {
@@ -280,18 +275,11 @@ class SirHalimStoreApp {
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <span>Bayar Sekarang (RM 1.99)</span>
-        `;
+        submitBtn.innerHTML = `<span>Bayar Sekarang (${this.currentProduct.formattedPrice})</span>`;
       }
     }
   }
 
-  // ==========================================
   // ==========================================
   // ORDER RECEIPT & AUTO-PICKUP DISPLAY
   // ==========================================
@@ -299,20 +287,36 @@ class SirHalimStoreApp {
     const receiptModal = document.getElementById("orderReceiptModal");
     const keyDisplay = document.getElementById("receiptKeyCode");
     const orderIdDisplay = document.getElementById("receiptOrderId");
-    const dateDisplay = document.getElementById("receiptDate");
     const buyerDisplay = document.getElementById("receiptBuyerName");
+    const priceDisplay = document.getElementById("receiptAmountPaid");
     const downloadLinkBtn = document.getElementById("receiptDownloadPortalBtn");
 
     if (keyDisplay) keyDisplay.innerText = keyRecord.key;
-    if (orderIdDisplay) orderIdDisplay.innerText = `${order.orderId} (${order.billCode})`;
-    if (dateDisplay) dateDisplay.innerText = order.date || new Date().toLocaleString("ms-MY");
+    if (orderIdDisplay) orderIdDisplay.innerText = `${order.orderId} (${order.billCode || 'ToyyibPay'})`;
     if (buyerDisplay) buyerDisplay.innerText = `${order.customerName} (${order.customerPhone})`;
+    if (priceDisplay) priceDisplay.innerText = `RM ${this.currentProduct.price} (Lunas)`;
 
-    // Prefill direct link with license key to https://kertas22026.vercel.app/
-    const portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(keyRecord.key)}`;
+    // Link directly with embedded license key
+    let portalUrl = keyRecord.portalUrl || "https://kertas22026.vercel.app/";
+    if (keyRecord.productType === "cids" || (order.productId === "cids-suites-pro")) {
+      portalUrl = "https://cidskey.vercel.app/";
+    } else if (!portalUrl.includes("?key=")) {
+      portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(keyRecord.key)}`;
+    }
+
     if (downloadLinkBtn) {
       downloadLinkBtn.href = portalUrl;
       downloadLinkBtn.target = "_blank";
+      if (keyRecord.productType === "cids") {
+        downloadLinkBtn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Buka Portal CIDS Suites Pro Sekarang &rsaquo;
+        `;
+      }
     }
 
     // Auto-send email to buyer's Gmail
@@ -328,6 +332,8 @@ class SirHalimStoreApp {
     const customerEmail = order.customerEmail || (this.lastOrderData && this.lastOrderData.customerEmail);
     if (!customerEmail) return;
 
+    const prodTitle = order.productTitle || this.currentProduct.title;
+
     try {
       // 1. Try Vercel Serverless API
       fetch("/api/send-email", {
@@ -340,6 +346,7 @@ class SirHalimStoreApp {
           orderId: order.orderId,
           billCode: order.billCode,
           amount: this.currentProduct.price,
+          productTitle: prodTitle,
           downloadUrl: portalUrl
         })
       }).catch(() => {});
@@ -348,9 +355,9 @@ class SirHalimStoreApp {
       const emailPayload = {
         access_key: "099a9b2a-c21d-4009-bf25-2efc8f307409",
         to_email: customerEmail,
-        subject: `[Sir Halim Store] Kod Lesen E-Book Fizik SPM 2026: ${keyRecord.key}`,
+        subject: `[Sir Halim Store] Kod Lesen ${prodTitle}: ${keyRecord.key}`,
         from_name: "Sir Halim Store",
-        message: `Salam ${order.customerName || "Pelanggan"},\n\nTerima kasih atas pembelian anda di Sir Halim Store!\n\nKOD LESEN DIGITAL ANDA:\n${keyRecord.key}\n\nPAUTAN PORTAL MUAT TURUN E-BOOK (Klik Terus):\n${portalUrl}\n\nNo. Pesanan: ${order.orderId}\nJumlah Bayaran: RM ${this.currentProduct.price} (Lunas)\nHad Muat Turun: 4 Kali\n\nSelamat mengulangkaji Fizik SPM 2026!`
+        message: `Salam ${order.customerName || "Pelanggan"},\n\nTerima kasih atas pembelian anda di Sir Halim Store!\n\nPRODUK:\n${prodTitle}\n\nKOD LESEN DIGITAL ANDA:\n${keyRecord.key}\n\nPAUTAN PORTAL (Klik Terus):\n${portalUrl}\n\nNo. Pesanan: ${order.orderId}\nJumlah Bayaran: RM ${this.currentProduct.price} (Lunas)\n\nSimpan mesej ini untuk rekod rujukan anda!`
       };
 
       await fetch("https://api.web3forms.com/submit", {
@@ -378,7 +385,7 @@ class SirHalimStoreApp {
   sendWhatsAppReceipt() {
     if (!this.lastOrderData || !this.lastAssignedKey) return;
     const phone = this.lastOrderData.customerPhone.replace(/[^0-9]/g, "");
-    const portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(this.lastAssignedKey.key)}`;
+    const portalUrl = this.lastAssignedKey.portalUrl || "https://kertas22026.vercel.app/";
     const text = encodeURIComponent(
       `*RESIT PEMBELIAN & KOD LESEN SIR HALIM STORE*\n\n` +
       `Pembeli: ${this.lastOrderData.customerName}\n` +
@@ -387,7 +394,7 @@ class SirHalimStoreApp {
       `ToyyibPay Bill: ${this.lastOrderData.billCode}\n` +
       `Jumlah Bayaran: RM ${this.currentProduct.price}\n\n` +
       `*KOD LESEN ANDA:* \n*${this.lastAssignedKey.key}*\n\n` +
-      `*Pautan Portal Muat Turun:* \n${portalUrl}\n\n` +
+      `*Pautan Portal:* \n${portalUrl}\n\n` +
       `_Simpan mesej ini untuk rekod rujukan anda._`
     );
 
@@ -415,13 +422,15 @@ class SirHalimStoreApp {
         if (container) {
           if (results && results.length > 0) {
             container.innerHTML = results.map(r => {
-              const portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}`;
+              const portalUrl = r.portalUrl || (r.productType === "cids" ? "https://cidskey.vercel.app/" : `https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}`);
+              const badgeLabel = r.productType === "cids" ? "CIDS Suites Pro (1 Tahun)" : "Fizik Kertas 2 2026";
               return `
               <div class="license-item-result">
                 <div class="license-result-top">
                   <div>
+                    <div style="font-size: 11px; font-weight: 700; color: #ff3b30; text-transform: uppercase; margin-bottom: 2px;">${badgeLabel}</div>
                     <div class="license-result-key">${r.key}</div>
-                    <div class="license-result-meta">${r.customer_name || 'Pembeli'} • Baki Muat Turun: <strong>${r.downloads_left !== undefined ? r.downloads_left : 4}x</strong></div>
+                    <div class="license-result-meta">${r.customer_name || 'Pembeli'} • Status: <strong>${r.downloads_left || 'Aktif'}</strong></div>
                   </div>
                 </div>
                 <div class="license-result-actions">
@@ -431,7 +440,7 @@ class SirHalimStoreApp {
                       <polyline points="7 10 12 15 17 10"></polyline>
                       <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Buka Portal Muat Turun Sekarang &rsaquo;
+                    Buka Portal &rsaquo;
                   </a>
                   <button type="button" class="btn-buy-pill btn-pill-white" onclick="navigator.clipboard.writeText('${r.key}'); alert('Kod lesen ${r.key} disalin!');">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -462,115 +471,72 @@ class SirHalimStoreApp {
   }
 
   // ==========================================
-  // ADMIN PIN & SETTINGS
+  // URL PARAMS CHECK (TOYYIBPAY RETURN)
   // ==========================================
-  promptAdminPin() {
-    const pin = prompt("Masukkan PIN Keselamatan Admin Sir Halim Store (Default: @reeZ860):");
-    if (pin === "@reeZ860") {
-      const adminModal = document.getElementById("adminStoreSettingsModal");
-      if (adminModal) {
-        adminModal.classList.add("active");
-        this.loadAdminSettingsValues();
-      }
-    } else if (pin !== null) {
-      alert("PIN salah.");
+  async checkUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    const statusId = params.get("status_id");
+    const billCode = params.get("billcode") || params.get("bill_code");
+    const orderId = params.get("order_id");
+
+    if (statusId === "1" && billCode) {
+      this.showToast("Pembayaran ToyyibPay berjaya disahkan! Mengambil kunci lesen anda...", "success");
+
+      const savedPending = sessionStorage.getItem("sirhalim_pending_order");
+      const pendingData = savedPending ? JSON.parse(savedPending) : {};
+
+      const keyRecord = await window.licenseEngine.autoClaimLicenseKey({
+        name: pendingData.customerName || "Pelanggan",
+        email: pendingData.customerEmail || "",
+        phone: pendingData.customerPhone || "",
+        orderId: orderId || pendingData.orderId || `ORD-${Date.now()}`,
+        billCode: billCode,
+        engineType: pendingData.engineType || "fizik"
+      });
+
+      this.lastAssignedKey = keyRecord;
+      this.lastOrderData = {
+        orderId: orderId || pendingData.orderId || "ORD-PAID",
+        billCode: billCode,
+        customerName: pendingData.customerName || "Pelanggan",
+        customerEmail: pendingData.customerEmail || "",
+        customerPhone: pendingData.customerPhone || "",
+        productTitle: pendingData.productTitle || this.currentProduct.title
+      };
+
+      this.showOrderReceipt(this.lastOrderData, keyRecord);
+      this.triggerConfetti();
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
-  }
-
-  loadAdminSettingsValues() {
-    const secKeyInput = document.getElementById("adminToyyibSecretKey");
-    const catCodeInput = document.getElementById("adminToyyibCatCode");
-    if (secKeyInput && window.toyyibPayManager) secKeyInput.value = window.toyyibPayManager.config.userSecretKey || "";
-    if (catCodeInput && window.toyyibPayManager) catCodeInput.value = window.toyyibPayManager.config.categoryCode || "";
-  }
-
-  // ==========================================
-  // UTILITIES
-  // ==========================================
-  showToast(message, type = "info") {
-    let toast = document.getElementById("appleGlobalToast");
-    if (!toast) {
-      toast = document.createElement("div");
-      toast.id = "appleGlobalToast";
-      toast.className = "apple-toast";
-      document.body.appendChild(toast);
-    }
-
-    toast.innerText = message;
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 3200);
   }
 
   triggerConfetti() {
-    const count = 120;
-    const defaults = { origin: { y: 0.7 } };
-
-    function fire(particleRatio, opts) {
-      if (typeof confetti === "function") {
-        confetti({
-          ...defaults,
-          ...opts,
-          particleCount: Math.floor(count * particleRatio)
-        });
-      }
-    }
-
     if (typeof confetti === "function") {
-      fire(0.25, { spread: 26, startVelocity: 55 });
-      fire(0.2, { spread: 60 });
-      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-      fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-      fire(0.1, { spread: 120, startVelocity: 45 });
+      confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
     }
   }
 
-  checkUrlParams() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const statusId = urlParams.get("status_id");
-    const billCode = urlParams.get("billcode");
-    const isReturn = urlParams.get("payment_return") === "1" || statusId !== null;
-
-    if (isReturn && billCode) {
-      if (statusId === "3") {
-        this.showToast("Pembayaran ToyyibPay tidak berjaya atau dibatalkan. Sila cuba lagi.", "error");
-        return;
-      }
-
-      const orderId = urlParams.get("order_id") || "ORD-" + billCode;
-      const buyerName = urlParams.get("name") || "Pelanggan ToyyibPay";
-      const buyerPhone = urlParams.get("phone") || "";
-      const buyerEmail = urlParams.get("email") || "";
-
-      this.showToast("Pembayaran ToyyibPay disahkan! Menuntut kod lesen...", "success");
-      
-      window.licenseEngine.autoClaimLicenseKey({
-        name: buyerName,
-        email: buyerEmail,
-        phone: buyerPhone,
-        orderId: orderId,
-        billCode: billCode
-      }).then(keyRecord => {
-        this.lastAssignedKey = keyRecord;
-        this.lastOrderData = {
-          orderId: orderId,
-          billCode: billCode,
-          customerName: buyerName,
-          customerPhone: buyerPhone,
-          customerEmail: buyerEmail,
-          amount: this.currentProduct.price,
-          key: keyRecord.key,
-          date: new Date().toLocaleDateString("ms-MY", { dateStyle: "medium" }) + " " + new Date().toLocaleTimeString("ms-MY", { timeStyle: "short" })
-        };
-        this.showOrderReceipt(this.lastOrderData, keyRecord);
-        this.triggerConfetti();
-      });
+  showToast(msg, type = "info") {
+    let container = document.getElementById("toastContainer");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "toastContainer";
+      container.style.cssText = "position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 8px;";
+      document.body.appendChild(container);
     }
+
+    const toast = document.createElement("div");
+    toast.style.cssText = "background: #1d1d1f; color: #fff; padding: 12px 20px; border-radius: 12px; font-size: 13px; font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: opacity 0.3s;";
+    toast.innerText = msg;
+
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = "0";
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.sirHalimStoreApp = new SirHalimStoreApp();
+  window.storeApp = new SirHalimStoreApp();
 });
