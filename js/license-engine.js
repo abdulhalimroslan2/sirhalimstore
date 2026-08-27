@@ -7,7 +7,8 @@
 const SUPABASE_CONFIG = {
   url: "https://fhwtxkbnxpdgrqmajujr.supabase.co",
   anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZod3R4a2JueHBkZ3JxbWFqdWpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2NjA3OTYsImV4cCI6MjEwMzIzNjc5Nn0.268UE9YfGwi_VNEfXN4mBhB7nMFvgDL1JHjQL3HLYt8",
-  adminSiteUrl: "https://kertas2admin.vercel.app/"
+  adminSiteUrl: "https://kertas2admin.vercel.app/",
+  downloadPortalUrl: "https://kertas22026.vercel.app/"
 };
 
 class LicenseEngine {
@@ -22,7 +23,7 @@ class LicenseEngine {
       if (window.supabase && typeof window.supabase.createClient === "function") {
         this.supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
         this.isCloudActive = true;
-        console.log("🟢 Supabase Cloud License Engine Connected.");
+        console.log("[Supabase] Cloud License Engine Connected.");
       } else {
         console.warn("Supabase SDK not loaded yet. Will initialize on runtime.");
       }

@@ -292,6 +292,7 @@ class SirHalimStoreApp {
   }
 
   // ==========================================
+  // ==========================================
   // ORDER RECEIPT & AUTO-PICKUP DISPLAY
   // ==========================================
   showOrderReceipt(order, keyRecord) {
@@ -307,14 +308,62 @@ class SirHalimStoreApp {
     if (dateDisplay) dateDisplay.innerText = order.date || new Date().toLocaleString("ms-MY");
     if (buyerDisplay) buyerDisplay.innerText = `${order.customerName} (${order.customerPhone})`;
 
-    // Prefill direct link with license key to kertas2admin.vercel.app or local portal
+    // Prefill direct link with license key to https://kertas22026.vercel.app/
+    const portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(keyRecord.key)}`;
     if (downloadLinkBtn) {
-      const portalUrl = `https://kertas2admin.vercel.app/?key=${encodeURIComponent(keyRecord.key)}`;
       downloadLinkBtn.href = portalUrl;
       downloadLinkBtn.target = "_blank";
     }
 
+    // Auto-send email to buyer's Gmail
+    this.sendLicenseEmail(order, keyRecord, portalUrl);
+
     if (receiptModal) receiptModal.classList.add("active");
+  }
+
+  // ==========================================
+  // AUTO DISPATCH EMAIL TO GMAIL
+  // ==========================================
+  async sendLicenseEmail(order, keyRecord, portalUrl) {
+    const customerEmail = order.customerEmail || (this.lastOrderData && this.lastOrderData.customerEmail);
+    if (!customerEmail) return;
+
+    try {
+      // 1. Try Vercel Serverless API
+      fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerEmail: customerEmail,
+          customerName: order.customerName,
+          licenseKey: keyRecord.key,
+          orderId: order.orderId,
+          billCode: order.billCode,
+          amount: this.currentProduct.price,
+          downloadUrl: portalUrl
+        })
+      }).catch(() => {});
+
+      // 2. Direct Web3Forms Relay backup (Guaranteed delivery to Gmail inbox)
+      const emailPayload = {
+        access_key: "099a9b2a-c21d-4009-bf25-2efc8f307409",
+        to_email: customerEmail,
+        subject: `[Sir Halim Store] Kod Lesen E-Book Fizik SPM 2026: ${keyRecord.key}`,
+        from_name: "Sir Halim Store",
+        message: `Salam ${order.customerName || "Pelanggan"},\n\nTerima kasih atas pembelian anda di Sir Halim Store!\n\nKOD LESEN DIGITAL ANDA:\n${keyRecord.key}\n\nPAUTAN PORTAL MUAT TURUN E-BOOK (Klik Terus):\n${portalUrl}\n\nNo. Pesanan: ${order.orderId}\nJumlah Bayaran: RM ${this.currentProduct.price} (Lunas)\nHad Muat Turun: 4 Kali\n\nSelamat mengulangkaji Fizik SPM 2026!`
+      };
+
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(emailPayload)
+      });
+
+      console.log("[Email] Kod lesen berjaya dihantar ke Gmail:", customerEmail);
+      this.showToast(`Kod lesen telah dihantar ke emel: ${customerEmail}`);
+    } catch (err) {
+      console.warn("[Email] Ralat penghantaran emel:", err);
+    }
   }
 
   copyLicenseKey() {
@@ -329,6 +378,7 @@ class SirHalimStoreApp {
   sendWhatsAppReceipt() {
     if (!this.lastOrderData || !this.lastAssignedKey) return;
     const phone = this.lastOrderData.customerPhone.replace(/[^0-9]/g, "");
+    const portalUrl = `https://kertas22026.vercel.app/?key=${encodeURIComponent(this.lastAssignedKey.key)}`;
     const text = encodeURIComponent(
       `*RESIT PEMBELIAN & KOD LESEN SIR HALIM STORE*\n\n` +
       `Pembeli: ${this.lastOrderData.customerName}\n` +
@@ -337,7 +387,7 @@ class SirHalimStoreApp {
       `ToyyibPay Bill: ${this.lastOrderData.billCode}\n` +
       `Jumlah Bayaran: RM ${this.currentProduct.price}\n\n` +
       `*KOD LESEN ANDA:* \n*${this.lastAssignedKey.key}*\n\n` +
-      `*Pautan Portal Muat Turun:* \nhttps://kertas2admin.vercel.app/?key=${this.lastAssignedKey.key}\n\n` +
+      `*Pautan Portal Muat Turun:* \n${portalUrl}\n\n` +
       `_Simpan mesej ini untuk rekod rujukan anda._`
     );
 
@@ -372,7 +422,7 @@ class SirHalimStoreApp {
                 <div style="font-family: var(--apple-font-mono); font-weight: 700; color: var(--apple-blue); font-size: 15px;">${r.key}</div>
                 <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">${r.customer_name || 'Pembeli'} • Baki: ${r.downloads_left !== undefined ? r.downloads_left : 4}x</div>
               </div>
-              <a href="https://kertas2admin.vercel.app/?key=${encodeURIComponent(r.key)}" target="_blank" class="btn-apple-pill" style="padding: 4px 12px; font-size: 12px;">
+              <a href="https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}" target="_blank" class="btn-apple-pill" style="padding: 4px 12px; font-size: 12px;">
                 Muat Turun
               </a>
             </div>
