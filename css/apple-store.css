@@ -351,11 +351,11 @@ button {
 
 .card-tag-red {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--apple-orange);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
 }
 
 .product-card.card-dark .card-tag-red {
@@ -363,11 +363,12 @@ button {
 }
 
 .card-headline {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
   color: var(--text-main);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .product-card.card-dark .card-headline {
@@ -376,8 +377,10 @@ button {
 
 .card-subtext {
   font-size: 14px;
+  font-weight: 400;
   color: var(--text-muted);
   line-height: 1.35;
+  letter-spacing: -0.01em;
   margin-bottom: 6px;
 }
 
@@ -388,7 +391,8 @@ button {
 .card-pricing {
   font-size: 14px;
   color: var(--text-main);
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .product-card.card-dark .card-pricing {
@@ -486,9 +490,10 @@ button {
 
 .help-eyebrow {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--text-muted);
+  letter-spacing: -0.01em;
   margin-bottom: 6px;
 }
 
@@ -499,8 +504,14 @@ button {
 .help-card-title {
   font-size: 24px;
   font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 8px;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  color: #1d1d1f;
+  margin-bottom: 6px;
+}
+
+.help-card-item.bg-dark-photo .help-card-title {
+  color: #ffffff;
 }
 
 .help-media-container {
