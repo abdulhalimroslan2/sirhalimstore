@@ -9,8 +9,8 @@ class SirHalimStoreApp {
       id: "fizik-kertas2-2026",
       title: "PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026",
       subtitle: "Koleksi Soalan Terpilih Mengikut Topik, Jawapan Lengkap & Skema Analisis SPM 2026",
-      price: 19.99,
-      formattedPrice: "RM 19.99",
+      price: 1.99,
+      formattedPrice: "RM 1.99",
       coverImage: "assets/fizik-kertas2-2026-cover.png",
       category: "Fizik SPM Tingkatan 4 & 5",
       badge: "Paling Laris & Eksklusif",
@@ -285,7 +285,7 @@ class SirHalimStoreApp {
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
-          <span>Bayar Sekarang (RM 19.99)</span>
+          <span>Bayar Sekarang (RM 1.99)</span>
         `;
       }
     }
