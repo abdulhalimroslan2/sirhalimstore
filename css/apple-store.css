@@ -168,7 +168,8 @@ button {
    3. HERO SECTION (100% APPLE STORE EXACT)
    ========================================================================== */
 .hero-section {
-  padding: 48px 0 28px;
+  padding-top: 48px;
+  padding-bottom: 28px;
 }
 
 .hero-grid {
@@ -224,7 +225,8 @@ button {
    4. CATEGORY ICON STRIP (PRODUCT SELECTOR)
    ========================================================================== */
 .category-strip-section {
-  padding: 20px 0 48px;
+  padding-top: 20px;
+  padding-bottom: 48px;
 }
 
 .category-scroll-container {
@@ -451,7 +453,8 @@ button {
    6. "HELP IS HERE." SECTION
    ========================================================================== */
 .help-section {
-  padding: 16px 0 64px;
+  padding-top: 16px;
+  padding-bottom: 64px;
 }
 
 .help-grid-track {
@@ -532,7 +535,8 @@ button {
    7. "THE APPLE STORE DIFFERENCE." SECTION
    ========================================================================== */
 .diff-section {
-  padding: 16px 0 64px;
+  padding-top: 16px;
+  padding-bottom: 64px;
 }
 
 .diff-grid-track {
