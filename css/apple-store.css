@@ -233,7 +233,7 @@ button {
   justify-content: flex-start;
   gap: 32px;
   overflow-x: auto;
-  padding: 10px 4px 20px;
+  padding: 10px 0 20px;
   scrollbar-width: none;
 }
 .category-scroll-container::-webkit-scrollbar {
@@ -307,7 +307,7 @@ button {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 10px 4px 24px;
+  padding: 10px 0 24px;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
@@ -454,7 +454,7 @@ button {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 10px 4px 20px;
+  padding: 10px 0 24px;
   scrollbar-width: none;
 }
 
@@ -528,7 +528,7 @@ button {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 10px 4px 20px;
+  padding: 10px 0 24px;
   scrollbar-width: none;
 }
 
