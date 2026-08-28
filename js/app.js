@@ -78,6 +78,37 @@ class SirHalimStoreApp {
       });
     });
 
+    // Mobile Menu Drawer Trigger (2-Lines button & Close button)
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenuCloseBtn = document.getElementById("mobileMenuCloseBtn");
+    const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+    if (mobileMenuBtn && mobileMenuOverlay) {
+      mobileMenuBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        mobileMenuOverlay.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+      });
+    }
+
+    if (mobileMenuCloseBtn && mobileMenuOverlay) {
+      mobileMenuCloseBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        mobileMenuOverlay.classList.remove("is-open");
+        document.body.style.overflow = "";
+      });
+    }
+
+    // Close mobile menu when clicking any mobile link
+    document.querySelectorAll(".mobile-menu-link").forEach(link => {
+      link.addEventListener("click", () => {
+        if (mobileMenuOverlay) {
+          mobileMenuOverlay.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+      });
+    });
+
     // License Check Buttons
     document.querySelectorAll("[data-action='open-license-checker']").forEach(btn => {
       btn.addEventListener("click", (e) => {

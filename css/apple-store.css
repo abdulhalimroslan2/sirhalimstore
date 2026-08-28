@@ -86,7 +86,7 @@ button {
 }
 
 /* ==========================================================================
-   1. GLOBAL NAV (APPLE SLIM MINIMALIST)
+   1. GLOBAL NAV (APPLE EXACT DESKTOP & MOBILE WITH 2-LINES MENU BUTTON)
    ========================================================================== */
 .globalnav {
   position: fixed;
@@ -109,14 +109,31 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+  gap: 16px;
+}
+
+.globalnav-logo {
+  display: flex;
+  align-items: center;
+  color: var(--text-main);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.globalnav-logo:hover {
+  opacity: 1;
+}
+.globalnav-logo svg {
+  fill: currentColor;
 }
 
 .globalnav-list {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  flex: 1;
   list-style: none;
+  padding: 0 16px;
 }
 
 .globalnav-item a {
@@ -133,8 +150,115 @@ button {
   opacity: 1;
 }
 
-.globalnav-item svg {
+.globalnav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.globalnav-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  text-decoration: none !important;
+}
+.globalnav-action-btn:hover {
+  opacity: 1;
+}
+.globalnav-action-btn svg {
   fill: currentColor;
+}
+
+.globalnav-menutrigger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.globalnav-menutrigger-btn:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   MOBILE MENU OVERLAY (100% APPLE STORE MOBILE DRAWER - PHOTO 2 MATCH)
+   ========================================================================== */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0 28px 40px;
+}
+
+.mobile-menu-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-menu-header {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mobile-menu-close-btn {
+  background: transparent;
+  border: none;
+  color: #1d1d1f;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-body {
+  flex: 1;
+  padding-top: 16px;
+  overflow-y: auto;
+}
+
+.mobile-menu-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mobile-menu-link {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1d1d1f;
+  text-decoration: none !important;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  transition: opacity 0.2s;
+  display: block;
+}
+
+.mobile-menu-link:hover {
+  opacity: 0.7;
 }
 
 /* ==========================================================================
@@ -892,24 +1016,195 @@ button {
   color: var(--apple-blue);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ==========================================================================
+   11. APPLE STORE RESPONSIVE (100% MOBILE SCREENSHOT EXACT MATCH)
+   ========================================================================== */
+@media (max-width: 834px) {
+  /* Global Nav Mobile */
+  .globalnav-list {
+    display: none !important;
+  }
+  .globalnav-menutrigger-btn {
+    display: flex !important;
+  }
+  .globalnav-actions {
+    gap: 16px;
+  }
+
+  /* Ribbon Banner Mobile */
+  .ribbon-banner {
+    padding: 10px 16px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Hero Section Mobile (Photo 1) */
+  .hero-section {
+    padding-top: 36px;
+    padding-bottom: 24px;
+  }
   .hero-grid {
     flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .hero-title-main {
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
   }
   .hero-sub-block {
     text-align: left;
+    margin-top: 4px;
+  }
+  .hero-sub-headline {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1d1d1f;
+    margin-bottom: 18px;
   }
   .hero-links {
     align-items: flex-start;
+    gap: 12px;
+  }
+  .hero-link-item {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* Category Strip Mobile (Photo 1) */
+  .category-strip-section {
+    padding-top: 8px;
+    padding-bottom: 36px;
+  }
+  .category-scroll-container {
+    gap: 22px;
+    padding: 6px 0 16px;
+  }
+  .category-card {
+    flex: 0 0 68px;
+  }
+  .category-thumb-img {
+    height: 52px;
+  }
+  .category-name {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  /* Section Headlines Mobile (Photo 1 & Photo 3) */
+  .section-headline-group {
+    margin-bottom: 12px;
+  }
+  .headline-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+  .headline-title .dim {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  /* Cards Carousel Mobile (Photo 3) */
+  .cards-scroll-track {
+    gap: 16px;
+    padding: 6px 0 20px;
   }
   .product-card {
-    flex: 0 0 320px;
+    flex: 0 0 312px;
+    max-width: calc(100vw - 56px);
+    height: 490px;
+    border-radius: 18px;
+    padding: 22px 20px 20px;
   }
+  .card-tag-red {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+  .card-headline {
+    font-size: 22px;
+    line-height: 1.15;
+    margin-bottom: 3px;
+  }
+  .card-subtext {
+    font-size: 13px;
+    line-height: 1.35;
+    margin-bottom: 3px;
+  }
+  .card-pricing {
+    font-size: 13px;
+  }
+  .card-image-stage {
+    height: 220px;
+    margin: 10px 0;
+  }
+  .card-product-img {
+    height: 220px;
+    border-radius: 12px;
+  }
+  .btn-buy-pill {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+  .card-text-link {
+    font-size: 13px;
+  }
+
+  /* Help Section Mobile (Photo 3) */
+  .help-section {
+    padding-top: 12px;
+    padding-bottom: 48px;
+  }
+  .help-grid-track {
+    gap: 16px;
+    padding: 6px 0 20px;
+  }
+  .help-card-item {
+    flex: 0 0 312px;
+    max-width: calc(100vw - 56px);
+    height: 450px;
+    border-radius: 18px;
+    padding: 22px 20px 20px;
+  }
+  .help-card-title {
+    font-size: 22px;
+    line-height: 1.16;
+  }
+  .specialist-portrait-img {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* Diff Section Mobile */
+  .diff-section {
+    padding-top: 12px;
+    padding-bottom: 48px;
+  }
+  .diff-grid-track {
+    gap: 14px;
+    padding: 6px 0 20px;
+  }
+  .diff-card-item {
+    flex: 0 0 200px;
+    height: 210px;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  /* Footer & Form Mobile */
   .footer-directory {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
   .form-row-2 {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .modal-sheet-panel {
+    max-width: 95vw;
+    padding: 24px 20px;
   }
 }
