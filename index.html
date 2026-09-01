@@ -7,7 +7,7 @@
   <meta name="description" content="Official Sir Halim Store. Shop CIDS Suites Pro (Lesen 1 Tahun) & PDF Fizik SPM Percubaan Kertas 2 2026 with instant ToyyibPay digital delivery and automatic Supabase key generation.">
   
   <!-- Apple Store CSS (100% Exact Layout - Zero Emojis, Pure SVG) -->
-  <link rel="stylesheet" href="css/apple-store.css?v=3.3">
+  <link rel="stylesheet" href="css/apple-store.css?v=3.4">
   
   <!-- Supabase & Confetti SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -204,7 +204,7 @@
     <div class="cards-carousel-container">
       <div class="cards-scroll-track" id="cardsCarousel">
 
-        <!-- CARD 1: NEW PRODUCT - CIDS SUITES PRO (RM 19.99 / TAHUN) -->
+        <!-- CARD 1: CIDS SUITES PRO (WHITE CARD) -->
         <div class="product-card" data-action="open-buy-sheet" data-product="cids-suites-pro">
           <div class="card-top-info">
             <div class="card-tag-red">BARU / EDISI 2026</div>
@@ -214,21 +214,25 @@
           </div>
 
           <div class="card-image-stage">
-            <img src="assets/cids-suites-pro-cover.png" alt="CIDS Suites Pro" class="card-product-img">
-          </div>
-
-          <div class="card-bottom-btn-row">
-            <button class="btn-buy-pill" data-action="open-buy-sheet" data-product="cids-suites-pro">Beli Lesen (RM 19.99)</button>
-            <a href="#" class="card-text-link" data-action="open-detail-sheet" data-product="cids-suites-pro">
-              Ketahui Lanjut
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </a>
+            <img src="assets/cids-suites-pro-icon.png" alt="CIDS Suites Pro" class="card-product-img">
           </div>
         </div>
 
-        <!-- CARD 2: PDF FIZIK KERTAS 2 2026 (RM 2.99) -->
+        <!-- CARD 2: PHYSFLIX ACADEMY (BLACK CARD - EXACT MATCH WITH IPHONE 17 PRO CARD) -->
+        <div class="product-card card-dark" onclick="window.open('https://physflix.vercel.app', '_blank')">
+          <div class="card-top-info">
+            <div class="card-tag-red">STREAMING & AI TUTOR</div>
+            <h3 class="card-headline">PhysFlix Academy</h3>
+            <p class="card-subtext">Platform video pembelajaran fizik & bimbingan AI 24/7.</p>
+            <div class="card-pricing">Strim Percuma di physflix.vercel.app</div>
+          </div>
+
+          <div class="card-image-stage">
+            <img src="assets/physflix-icon.png" alt="PhysFlix Academy" class="card-product-img">
+          </div>
+        </div>
+
+        <!-- CARD 3: FIZIK KERTAS 2 2026 (WHITE CARD - EXACT MATCH WITH MACBOOK NEO CARD) -->
         <div class="product-card" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">
           <div class="card-top-info">
             <div class="card-tag-red">ORDER NOW</div>
@@ -238,73 +242,49 @@
           </div>
 
           <div class="card-image-stage">
-            <img src="assets/fizik-kertas2-2026-cover.png" alt="Cover Modul Fizik 2026" class="card-product-img">
-          </div>
-
-          <div class="card-bottom-btn-row">
-            <button class="btn-buy-pill" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Beli E-Book (RM 2.99)</button>
-            <a href="#" class="card-text-link" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">
-              Ketahui Lanjut
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </a>
+            <img src="assets/fizik-kertas2-icon.png" alt="Fizik Kertas 2 2026" class="card-product-img">
           </div>
         </div>
 
-        <!-- CARD 3: PHYSFLIX ACADEMY -->
-        <div class="product-card" onclick="window.open('https://physflix.vercel.app', '_blank')">
+        <!-- CARD 4: PORTAL CIDS SUITES (WHITE CARD) -->
+        <div class="product-card" onclick="window.open('https://cidspro.vercel.app/', '_blank')">
           <div class="card-top-info">
-            <div class="card-tag-red">STREAMING & AI TUTOR</div>
-            <h3 class="card-headline">PhysFlix Academy</h3>
-            <p class="card-subtext">Platform video pembelajaran fizik, eksperimen & bimbingan AI 24/7.</p>
-            <div class="card-pricing">Strim Sekarang</div>
+            <div class="card-tag-red">PORTAL RASMI</div>
+            <h3 class="card-headline">Portal CIDS Pro</h3>
+            <p class="card-subtext">Akses web pengurusan kurikulum dan jadual digital.</p>
+            <div class="card-pricing">Buka Portal Web</div>
           </div>
 
           <div class="card-image-stage">
-            <img src="assets/physflix-pane.png" alt="PhysFlix Academy" class="card-product-img">
-          </div>
-
-          <div class="card-bottom-btn-row">
-            <a href="https://physflix.vercel.app" target="_blank" class="btn-buy-pill" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;" onclick="event.stopPropagation();">Buka PhysFlix</a>
-            <a href="https://physflix.vercel.app" target="_blank" class="card-text-link" onclick="event.stopPropagation();">
-              Tonton Percuma
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </a>
+            <img src="assets/cids-portal-icon.png" alt="Portal CIDS Pro" class="card-product-img">
           </div>
         </div>
 
-        <!-- CARD 4: AUTO LICENSE SYSTEM (BLACK CARD #000000) -->
+        <!-- CARD 5: KOD LESEN DIGITAL (BLACK CARD) -->
         <div class="product-card card-dark" data-action="open-license-checker">
           <div class="card-top-info">
             <div class="card-tag-red">AKSES DIGITAL 24/7</div>
             <h3 class="card-headline">Kod Lesen Automatik</h3>
-            <p class="card-subtext">Terima kod lesen digital serta-merta selepas bayaran.</p>
-            <div class="card-pricing">CIDS Suites Pro & Fizik SPM</div>
+            <p class="card-subtext">Kunci lesen digital dijanakan serta-merta 24/7.</p>
+            <div class="card-pricing">Semak Status Lesen</div>
           </div>
 
-          <div class="card-image-stage" style="background: radial-gradient(circle at center, rgba(52, 199, 89, 0.16), transparent 70%); height: 250px;">
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
-              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 2l-2 2m-1.5 1.5L14 9a5 5 0 1 0 3 3l6-6v-4h-4v2h-2v2h-2z"></path>
-                <circle cx="7.5" cy="16.5" r="1.5"></circle>
-              </svg>
-              <div style="font-family: var(--apple-font-mono); font-size: 17px; font-weight: 700; color: #34c759; background: rgba(255,255,255,0.08); padding: 8px 18px; border-radius: 8px; border: 1px solid rgba(52, 199, 89, 0.25);">
-                CIDS-XXXX-XXXX-XXXX
-              </div>
-            </div>
+          <div class="card-image-stage">
+            <img src="assets/license-key-icon.png" alt="Kod Lesen Automatik" class="card-product-img">
+          </div>
+        </div>
+
+        <!-- CARD 6: SIR HALIM STORE GIFT CARD (WHITE CARD) -->
+        <div class="product-card" data-action="open-buy-sheet" data-product="cids-suites-pro">
+          <div class="card-top-info">
+            <div class="card-tag-red">GIFT CARD / KUPON</div>
+            <h3 class="card-headline">Sir Halim Gift Card</h3>
+            <p class="card-subtext">Hadiah dan kupon diskaun khas untuk pelajar & guru.</p>
+            <div class="card-pricing">Tebus Kunci Digital</div>
           </div>
 
-          <div class="card-bottom-btn-row">
-            <button class="btn-buy-pill btn-pill-white" data-action="open-buy-sheet" data-product="cids-suites-pro">Dapatkan Lesen</button>
-            <a href="#" class="card-text-link" style="color: #2997ff;" data-action="open-license-checker">
-              Semak Lesen
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 2px;">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </a>
+          <div class="card-image-stage">
+            <img src="assets/gift-card-icon.png" alt="Sir Halim Gift Card" class="card-product-img">
           </div>
         </div>
 
