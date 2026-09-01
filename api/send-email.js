@@ -54,49 +54,49 @@ export default async function handler(req, res) {
   <div class="container">
     <div class="header">
       <h1>Sir Halim Store</h1>
-      <p>Pengesahan Pembelian & Kunci Lesen Rasmi</p>
+      <p>Order Confirmation & Official Digital License Key</p>
     </div>
     <div class="content">
-      <div class="greeting">Salam sejahtera, ${customerName || "Pelanggan"}!</div>
-      <p>Terima kasih kerana membeli <strong>PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026</strong>. Pembayaran anda melalui ToyyibPay telah berjaya disahkan.</p>
+      <div class="greeting">Hello, ${customerName || "Customer"}!</div>
+      <p>Thank you for your purchase at Sir Halim Store. Your payment via ToyyibPay FPX has been successfully confirmed.</p>
       
       <div class="license-card">
-        <div class="license-label">KOD LESEN DIGITAL ANDA</div>
+        <div class="license-label">YOUR DIGITAL LICENSE KEY</div>
         <div class="license-key">${licenseKey}</div>
       </div>
 
       <a href="${portalLink}" class="btn-download" target="_blank">
-        Buka Portal & Muat Turun E-Book Sekarang &rsaquo;
+        Open Portal & Access Download Now &rsaquo;
       </a>
 
       <p style="font-size: 13px; color: #6e6e73; text-align: center;">
-        Atau buka pautan ini terus: <br>
+        Or access directly via this link: <br>
         <a href="${portalLink}" style="color: #0071e3; word-break: break-all;">${portalLink}</a>
       </p>
 
       <div class="order-details">
-        <div class="order-row"><span><strong>No. Pesanan:</strong></span> <span>${orderId || "N/A"} (${billCode || "ToyyibPay"})</span></div>
-        <div class="order-row"><span><strong>Produk:</strong></span> <span>E-Book Fizik SPM Kertas 2 2026 + Skema A+</span></div>
-        <div class="order-row"><span><strong>Jumlah Bayaran:</strong></span> <span style="color: #0071e3; font-weight: 700;">RM ${amount || "2.99"} (Lunas)</span></div>
-        <div class="order-row"><span><strong>Had Muat Turun:</strong></span> <span>4 Kali Akses Penuh</span></div>
+        <div class="order-row"><span><strong>Order No:</strong></span> <span>${orderId || "N/A"} (${billCode || "ToyyibPay"})</span></div>
+        <div class="order-row"><span><strong>Product:</strong></span> <span>${req.body.productTitle || "Official Digital License"}</span></div>
+        <div class="order-row"><span><strong>Total Paid:</strong></span> <span style="color: #0071e3; font-weight: 700;">RM ${amount || "19.99"} (Paid)</span></div>
+        <div class="order-row"><span><strong>Status:</strong></span> <span>Active & Ready to Use</span></div>
       </div>
     </div>
     <div class="footer">
-      &copy; 2026 Sir Halim Store. Hak Cipta Terpelihara.<br>
-      Jika ada sebarang soalan, hubungi Sir Halim di WhatsApp: +60123456789
+      &copy; 2026 Sir Halim Store. All Rights Reserved.<br>
+      For any inquiries, reach out to Sir Halim on Telegram: @halimroslan or WhatsApp: +60123456789
     </div>
   </div>
 </body>
 </html>
     `;
 
-    // Attempt dispatch via Web3Forms REST API (reliable free delivery to any email without API key lock)
+    // Dispatch via Web3Forms REST API
     const emailPayload = {
-      access_key: "099a9b2a-c21d-4009-bf25-2efc8f307409", // Standard Web3Forms Relay key
+      access_key: "099a9b2a-c21d-4009-bf25-2efc8f307409",
       to_email: customerEmail,
-      subject: `[Sir Halim Store] Kunci Lesen E-Book Fizik SPM 2026: ${licenseKey}`,
+      subject: `[Sir Halim Store] Digital License Key: ${licenseKey}`,
       from_name: "Sir Halim Store",
-      message: `Salam ${customerName || "Pelanggan"},\n\nTerima kasih atas pembelian anda!\n\nKOD LESEN DIGITAL ANDA:\n${licenseKey}\n\nPAUTAN PORTAL MUAT TURUN (Terus Buka):\n${portalLink}\n\nNo. Pesanan: ${orderId}\nJumlah Bayaran: RM ${amount || "2.99"} (Lunas)\n\nSelamat mengulangkaji dan semoga cemerlang SPM 2026!`,
+      message: `Hello ${customerName || "Customer"},\n\nThank you for your purchase!\n\nYOUR DIGITAL LICENSE KEY:\n${licenseKey}\n\nDOWNLOAD / PORTAL LINK (Click to Open):\n${portalLink}\n\nOrder No: ${orderId}\nTotal Paid: RM ${amount || "19.99"} (Paid)\n\nHappy learning & teaching!`,
       html: htmlContent
     };
 

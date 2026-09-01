@@ -64,7 +64,7 @@ class ToyyibPayManager {
         const formData = new URLSearchParams();
         formData.append("userSecretKey", this.config.userSecretKey);
         formData.append("categoryCode", this.config.categoryCode);
-        formData.append("billName", "PDF Fizik Kertas 2 2026");
+        formData.append("billName", orderData.productTitle || "Sir Halim Store Digital Order");
         formData.append("billDescription", `Sir Halim Store - Order #${orderData.orderId}`);
         formData.append("billPriceSetting", "1");
         formData.append("billPayorInfo", "1");
@@ -90,7 +90,7 @@ class ToyyibPayManager {
         const result = await response.json();
         if (Array.isArray(result) && result[0] && result[0].BillCode) {
           const liveBillCode = result[0].BillCode;
-          console.log("[ToyyibPay] Live Bill Berjaya Dijana:", liveBillCode);
+          console.log("[ToyyibPay] Live Bill Generated:", liveBillCode);
           return {
             success: true,
             billCode: liveBillCode,

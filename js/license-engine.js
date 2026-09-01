@@ -1,6 +1,6 @@
 /**
  * SIR HALIM STORE - MULTI-PRODUCT SUPABASE LICENSE AUTO-PICKUP ENGINE
- * 1. Fizik SPM 2026 Portal (kertas22026.vercel.app / kertas2admin.vercel.app)
+ * 1. Physics SPM 2026 Portal (kertas22026.vercel.app / kertas2admin.vercel.app)
  * 2. CIDS Suites Pro (cidskey.vercel.app / sennodrfmsijorfcnrud.supabase.co)
  */
 
@@ -31,7 +31,7 @@ class LicenseEngine {
       if (window.supabase && typeof window.supabase.createClient === "function") {
         this.clients.fizik = window.supabase.createClient(DATABASES_CONFIG.fizik.url, DATABASES_CONFIG.fizik.key);
         this.clients.cids = window.supabase.createClient(DATABASES_CONFIG.cids.url, DATABASES_CONFIG.cids.key);
-        console.log("[Supabase] Both Fizik and CIDS Cloud Engines Connected.");
+        console.log("[Supabase] Both Physics and CIDS Cloud Engines Connected.");
       } else {
         console.warn("Supabase SDK not ready yet. Will initialize on runtime.");
       }
@@ -70,7 +70,7 @@ class LicenseEngine {
   async autoClaimLicenseKey(buyerDetails) {
     const engineType = buyerDetails.engineType === "cids" ? "cids" : "fizik";
     const client = this.getClient(engineType);
-    const customerName = buyerDetails.name || "Pelanggan Sir Halim Store";
+    const customerName = buyerDetails.name || "Customer";
     const orderId = buyerDetails.orderId || `ORD-${Date.now()}`;
     const billCode = buyerDetails.billCode || "TOYYIB-PAID";
 
@@ -90,7 +90,7 @@ class LicenseEngine {
 
           if (!fetchErr && availableKeys && availableKeys.length > 0) {
             const targetKey = availableKeys[0];
-            const notesText = `ToyyibPay: ${billCode} / ${orderId} - ${customerName} (${buyerDetails.phone || buyerDetails.email}) - Lesen 1 Tahun`;
+            const notesText = `ToyyibPay: ${billCode} / ${orderId} - ${customerName} (${buyerDetails.phone || buyerDetails.email}) - 1-Year License`;
 
             const { data: updatedKey, error: updateErr } = await client
               .from("license_keys")
@@ -106,7 +106,7 @@ class LicenseEngine {
                 productType: "cids",
                 portalUrl: "https://cidspro.vercel.app/"
               };
-              console.log("[Supabase CIDS] Berjaya Claim Kunci Sedia Ada:", assignedKeyRecord.key);
+              console.log("[Supabase CIDS] Claimed existing key:", assignedKeyRecord.key);
             }
           }
         } catch (err) {
@@ -120,7 +120,7 @@ class LicenseEngine {
           key: freshKey,
           max_devices: 2,
           is_active: true,
-          notes: `ToyyibPay: ${billCode} / ${orderId} - ${customerName} (${buyerDetails.phone || buyerDetails.email}) - Lesen 1 Tahun`
+          notes: `ToyyibPay: ${billCode} / ${orderId} - ${customerName} (${buyerDetails.phone || buyerDetails.email}) - 1-Year License`
         };
 
         if (client) {
@@ -136,7 +136,7 @@ class LicenseEngine {
                 productType: "cids",
                 portalUrl: "https://cidspro.vercel.app/"
               };
-              console.log("[Supabase CIDS] Berjaya Jana & Simpan Kunci Baharu:", assignedKeyRecord.key);
+              console.log("[Supabase CIDS] Generated & stored new key:", assignedKeyRecord.key);
             }
           } catch (e) {
             console.warn("Error inserting CIDS key:", e);
@@ -154,7 +154,7 @@ class LicenseEngine {
         }
       }
     } else {
-      // FIZIK SPM KEY PICKUP
+      // PHYSICS SPM KEY PICKUP
       if (client) {
         try {
           const { data: availableKeys, error: fetchErr } = await client
@@ -183,11 +183,11 @@ class LicenseEngine {
                 productType: "fizik",
                 portalUrl: `https://kertas22026.vercel.app/?key=${encodeURIComponent(updatedKey[0].key)}`
               };
-              console.log("[Supabase Fizik] Berjaya Claim Kunci Sedia Ada:", assignedKeyRecord.key);
+              console.log("[Supabase Physics] Claimed existing key:", assignedKeyRecord.key);
             }
           }
         } catch (err) {
-          console.warn("Fizik fetch error, fallback:", err);
+          console.warn("Physics fetch error, fallback:", err);
         }
       }
 
@@ -216,10 +216,10 @@ class LicenseEngine {
                 productType: "fizik",
                 portalUrl: `https://kertas22026.vercel.app/?key=${encodeURIComponent(inserted[0].key)}`
               };
-              console.log("[Supabase Fizik] Berjaya Jana & Simpan Kunci Baharu:", assignedKeyRecord.key);
+              console.log("[Supabase Physics] Generated & stored new key:", assignedKeyRecord.key);
             }
           } catch (e) {
-            console.warn("Error inserting Fizik key:", e);
+            console.warn("Error inserting Physics key:", e);
           }
         }
 
@@ -264,7 +264,7 @@ class LicenseEngine {
     query = query.trim().toUpperCase();
     const results = [];
 
-    // Search Fizik Supabase
+    // Search Physics Supabase
     const fizikClient = this.getClient("fizik");
     if (fizikClient) {
       try {
@@ -291,8 +291,8 @@ class LicenseEngine {
         if (data) {
           data.forEach(d => results.push({
             ...d,
-            customer_name: d.notes || "Pengguna CIDS Suites Pro",
-            downloads_left: "2 Peranti (1 Tahun)",
+            customer_name: d.notes || "CIDS Suites Pro User",
+            downloads_left: "2 Devices (1 Year)",
             productType: "cids",
             portalUrl: `https://cidspro.vercel.app/`
           }));

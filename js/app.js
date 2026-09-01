@@ -1,8 +1,9 @@
 /**
  * SIR HALIM STORE - MULTI-PRODUCT CLIENT APPLICATION
+ * Malaysian English Edition
  * Features:
- * 1. CIDS Suites Pro (Lesen 1 Tahun / 2 Peranti) - RM 19.99
- * 2. PDF Fizik SPM Percubaan Kertas 2 2026 - RM 2.99
+ * 1. CIDS Suites Pro (1-Year License / 2 Devices) - RM 19.99
+ * 2. PDF Physics SPM State Trial Paper 2 2026 - RM 2.99
  */
 
 class SirHalimStoreApp {
@@ -10,36 +11,36 @@ class SirHalimStoreApp {
     this.products = {
       "cids-suites-pro": {
         id: "cids-suites-pro",
-        title: "CIDS Suites Pro (Lesen 1 Tahun / 2 Peranti)",
-        subtitle: "Sistem Pengurusan RPH Pintar & Automasi Pendidikan CIDS Suites Pro Versi 2026. Sah untuk 1 Tahun.",
+        title: "CIDS Suites Pro (1-Year License / 2 Devices)",
+        subtitle: "Smart Lesson Plan Management & Educational Automation CIDS Suites Pro 2026 Edition. Valid for 1 Year.",
         price: 19.99,
         formattedPrice: "RM 19.99",
         coverImage: "assets/cids-suites-pro-cover.png",
-        category: "Perisian & Automasi Guru",
-        badge: "EDISI 2026 / POPULAR",
+        category: "Teacher Software & Automation",
+        badge: "2026 EDITION / POPULAR",
         engineType: "cids",
         portalUrl: "https://cidspro.vercel.app/",
         filesIncluded: [
-          "Lesen Kunci Digital 1 Tahun (Sah untuk 2 Peranti Komputer/Laptop)",
-          "Akses Penuh CIDS Suites Pro Versi Terkini 2026",
-          "Sokongan Kemas Kini Automatik & Cloud Sync"
+          "1-Year Digital License Key (Valid for 2 Computers/Laptops)",
+          "Full Access to CIDS Suites Pro Latest 2026 Edition",
+          "Automatic Updates & Cloud Sync Support"
         ]
       },
       "fizik-kertas2-2026": {
         id: "fizik-kertas2-2026",
-        title: "PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026",
-        subtitle: "Koleksi Soalan Terpilih Mengikut Topik, Jawapan Lengkap & Skema Analisis SPM 2026",
+        title: "PDF Physics State Trial Paper 2 Exam Collection 2026",
+        subtitle: "Topical Selected Questions, Complete Model Answers & SPM 2026 Scheme Analysis",
         price: 2.99,
         formattedPrice: "RM 2.99",
         coverImage: "assets/fizik-kertas2-2026-cover.png",
-        category: "Fizik SPM Tingkatan 4 & 5",
-        badge: "Paling Laris & Eksklusif",
+        category: "SPM Physics Form 4 & 5",
+        badge: "Best Seller & Exclusive",
         engineType: "fizik",
         portalUrl: "https://kertas22026.vercel.app/",
         filesIncluded: [
-          "E-Book PDF Soalan Kertas 2 Topikal Percubaan 2026 (4.7 MB)",
-          "Skema & Analisis Jawapan Lengkap Kertas 2 (4.0 MB)",
-          "Kunci Lesen Digital Automatik (Had Muat Turun 4x)"
+          "Topical State Trial Paper 2 Question E-Book PDF (4.7 MB)",
+          "Complete Answer Scheme & Detailed A+ Analysis (4.0 MB)",
+          "Instant Automated License Key (4x Download Limit)"
         ]
       }
     };
@@ -56,7 +57,7 @@ class SirHalimStoreApp {
     this.bindEvents();
     this.initCarousel();
     this.checkUrlParams();
-    console.log("🍏 Sir Halim Store App Initialized with Multi-Product Suite.");
+    console.log("🍏 Sir Halim Store App Initialized with Multi-Product Suite (English).");
   }
 
   bindEvents() {
@@ -192,7 +193,7 @@ class SirHalimStoreApp {
     if (titleEl) titleEl.innerText = product.title;
     if (subEl) subEl.innerText = product.subtitle;
     if (priceEl) priceEl.innerText = product.formattedPrice;
-    if (btnSpan) btnSpan.innerHTML = `<span>Bayar Sekarang (${product.formattedPrice})</span>`;
+    if (btnSpan) btnSpan.innerHTML = `<span>Pay Now (${product.formattedPrice})</span>`;
 
     if (modal) {
       modal.classList.add("active");
@@ -222,16 +223,16 @@ class SirHalimStoreApp {
 
     if (product.id === "cids-suites-pro") {
       if (bannerLink) bannerLink.href = "https://cidspro.vercel.app/";
-      if (bannerTitle) bannerTitle.innerText = "Portal Rasmi CIDS Suites Pro";
-      if (bannerSub) bannerSub.innerText = "Lihat Video Tutorial & Muat Turun Versi Trial";
+      if (bannerTitle) bannerTitle.innerText = "Official CIDS Suites Pro Portal";
+      if (bannerSub) bannerSub.innerText = "Watch Video Tutorials & Download Trial Version";
       if (secondaryPortalBtn) {
         secondaryPortalBtn.href = "https://cidspro.vercel.app/";
         secondaryPortalBtn.innerHTML = `
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+          <svg width="16" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
             <circle cx="12" cy="12" r="10"></circle>
             <polygon points="10 8 16 12 10 16 10 8"></polygon>
           </svg>
-          Tonton Tutorial & Muat Turun Trial di Portal Rasmi
+          Watch Tutorials & Download Trial on Official Portal
         `;
       }
       if (featureList) {
@@ -240,36 +241,36 @@ class SirHalimStoreApp {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Lesen 1 Tahun:</strong> Sah aktif selama 365 hari untuk kegunaan 2 peranti komputer/laptop.</span>
+            <span><strong>1-Year License:</strong> Fully active for 365 days for up to 2 desktop/laptop computers.</span>
           </li>
           <li style="display: flex; gap: 8px; align-items: flex-start;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Automasi RPH Pintar:</strong> Penulisan RPH pantas, import jadual, DSKP bersepadu & Cloud Sync.</span>
+            <span><strong>Smart Lesson Plan Automation:</strong> Fast RPH creation, schedule import, integrated DSKP & Cloud Sync.</span>
           </li>
           <li style="display: flex; gap: 8px; align-items: flex-start;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Penyerahan Kunci Automatik:</strong> Kod lesen dikeluarkan secara automatik serta-merta selepas bayaran ToyyibPay.</span>
+            <span><strong>Automated Key Delivery:</strong> Digital license key generated immediately upon ToyyibPay FPX confirmation.</span>
           </li>
           <li style="display: flex; gap: 8px; align-items: flex-start;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Tutorial & App Trial:</strong> Akses panduan penuh dan muat turun di <a href="https://cidspro.vercel.app/" target="_blank" style="color: var(--apple-blue); font-weight: 600; text-decoration: underline;">https://cidspro.vercel.app/</a></span>
+            <span><strong>Tutorials & Trial App:</strong> Access complete setup guides and trial downloads at <a href="https://cidspro.vercel.app/" target="_blank" style="color: var(--apple-blue); font-weight: 600; text-decoration: underline;">https://cidspro.vercel.app/</a></span>
           </li>
         `;
       }
       if (buyBtn) {
         buyBtn.setAttribute("data-product", "cids-suites-pro");
-        buyBtn.innerText = "Beli Sekarang (RM 19.99)";
+        buyBtn.innerText = "Buy Now (RM 19.99)";
       }
     } else {
       if (bannerLink) bannerLink.href = "https://kertas22026.vercel.app/";
-      if (bannerTitle) bannerTitle.innerText = "Portal Muat Turun Fizik SPM 2026";
-      if (bannerSub) bannerSub.innerText = "Muat Turun PDF E-Book & Skema Jawapan Penuh";
+      if (bannerTitle) bannerTitle.innerText = "Physics SPM 2026 Download Portal";
+      if (bannerSub) bannerSub.innerText = "Download E-Book PDF & Full Answer Scheme";
       if (secondaryPortalBtn) {
         secondaryPortalBtn.href = "https://kertas22026.vercel.app/";
         secondaryPortalBtn.innerHTML = `
@@ -278,7 +279,7 @@ class SirHalimStoreApp {
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Buka Portal Muat Turun Fizik 2026
+          Open Physics 2026 Download Portal
         `;
       }
       if (featureList) {
@@ -287,25 +288,25 @@ class SirHalimStoreApp {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Koleksi Soalan Trial Negeri:</strong> Himpunan soalan berkualiti tinggi mirip soalan percubaan SPM sebenar 2026.</span>
+            <span><strong>State Trial Exam Collection:</strong> Premium compilation mirroring actual SPM 2026 state trial exam formats.</span>
           </li>
           <li style="display: flex; gap: 8px; align-items: flex-start;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Skema & Analisis A+:</strong> Panduan pemarkahan terperinci, tip kata kunci, dan jalan kerja lengkap.</span>
+            <span><strong>A+ Scheme & Analysis:</strong> Detailed marking breakdown, scoring rubrics, keyword tips, and complete workings.</span>
           </li>
           <li style="display: flex; gap: 8px; align-items: flex-start;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span><strong>Akses Digital Segera:</strong> Kod lesen dikeluarkan automatik untuk akses portal <a href="https://kertas22026.vercel.app/" target="_blank" style="color: var(--apple-blue); font-weight: 600; text-decoration: underline;">https://kertas22026.vercel.app/</a></span>
+            <span><strong>Instant Digital Access:</strong> License code generated automatically for portal access at <a href="https://kertas22026.vercel.app/" target="_blank" style="color: var(--apple-blue); font-weight: 600; text-decoration: underline;">https://kertas22026.vercel.app/</a></span>
           </li>
         `;
       }
       if (buyBtn) {
         buyBtn.setAttribute("data-product", "fizik-kertas2-2026");
-        buyBtn.innerText = "Beli Sekarang (RM 2.99)";
+        buyBtn.innerText = "Buy Now (RM 2.99)";
       }
     }
 
@@ -332,7 +333,7 @@ class SirHalimStoreApp {
     const phone = phoneInput ? phoneInput.value.trim() : "";
 
     if (!name || !email || !phone) {
-      this.showToast("Sila lengkapkan semua maklumat pembeli.", "warning");
+      this.showToast("Please complete all buyer details.", "warning");
       return;
     }
 
@@ -344,7 +345,7 @@ class SirHalimStoreApp {
           <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
           <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
         </svg>
-        <span>Menyambung ke ToyyibPay...</span>
+        <span>Connecting to ToyyibPay...</span>
       `;
     }
 
@@ -362,7 +363,7 @@ class SirHalimStoreApp {
     };
 
     try {
-      this.showToast("Memproses pembayaran melalui ToyyibPay...", "info");
+      this.showToast("Processing payment via ToyyibPay...", "info");
 
       // 1. Process Payment via ToyyibPay Module
       const paymentResult = await window.toyyibPayManager.processPayment(orderPayload);
@@ -398,12 +399,12 @@ class SirHalimStoreApp {
         this.triggerConfetti();
       }
     } catch (err) {
-      console.error("Ralat Checkout:", err);
-      this.showToast("Ralat memproses pembayaran: " + err.message, "error");
+      console.error("Checkout Error:", err);
+      this.showToast("Error processing payment: " + err.message, "error");
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = `<span>Bayar Sekarang (${this.currentProduct.formattedPrice})</span>`;
+        submitBtn.innerHTML = `<span>Pay Now (${this.currentProduct.formattedPrice})</span>`;
       }
     }
   }
@@ -422,7 +423,7 @@ class SirHalimStoreApp {
     if (keyDisplay) keyDisplay.innerText = keyRecord.key;
     if (orderIdDisplay) orderIdDisplay.innerText = `${order.orderId} (${order.billCode || 'ToyyibPay'})`;
     if (buyerDisplay) buyerDisplay.innerText = `${order.customerName} (${order.customerPhone})`;
-    if (priceDisplay) priceDisplay.innerText = `RM ${this.currentProduct.price} (Lunas)`;
+    if (priceDisplay) priceDisplay.innerText = `RM ${this.currentProduct.price} (Paid)`;
 
     // Link directly with embedded license key
     let portalUrl = keyRecord.portalUrl || "https://kertas22026.vercel.app/";
@@ -442,7 +443,7 @@ class SirHalimStoreApp {
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Buka Portal CIDS Suites Pro Sekarang &rsaquo;
+          Open CIDS Suites Pro Portal Now &rsaquo;
         `;
       }
     }
@@ -483,9 +484,9 @@ class SirHalimStoreApp {
       const emailPayload = {
         access_key: "099a9b2a-c21d-4009-bf25-2efc8f307409",
         to_email: customerEmail,
-        subject: `[Sir Halim Store] Kod Lesen ${prodTitle}: ${keyRecord.key}`,
+        subject: `[Sir Halim Store] License Key for ${prodTitle}: ${keyRecord.key}`,
         from_name: "Sir Halim Store",
-        message: `Salam ${order.customerName || "Pelanggan"},\n\nTerima kasih atas pembelian anda di Sir Halim Store!\n\nPRODUK:\n${prodTitle}\n\nKOD LESEN DIGITAL ANDA:\n${keyRecord.key}\n\nPAUTAN PORTAL (Klik Terus):\n${portalUrl}\n\nNo. Pesanan: ${order.orderId}\nJumlah Bayaran: RM ${this.currentProduct.price} (Lunas)\n\nSimpan mesej ini untuk rekod rujukan anda!`
+        message: `Hello ${order.customerName || "Customer"},\n\nThank you for your purchase at Sir Halim Store!\n\nPRODUCT:\n${prodTitle}\n\nYOUR DIGITAL LICENSE KEY:\n${keyRecord.key}\n\nPORTAL LINK (Click to Open):\n${portalUrl}\n\nOrder No: ${order.orderId}\nTotal Paid: RM ${this.currentProduct.price} (Paid)\n\nPlease keep this message for your reference!`
       };
 
       await fetch("https://api.web3forms.com/submit", {
@@ -494,19 +495,19 @@ class SirHalimStoreApp {
         body: JSON.stringify(emailPayload)
       });
 
-      console.log("[Email] Kod lesen berjaya dihantar ke Gmail:", customerEmail);
-      this.showToast(`Kod lesen telah dihantar ke emel: ${customerEmail}`);
+      console.log("[Email] License key delivered to Gmail:", customerEmail);
+      this.showToast(`License key sent to email: ${customerEmail}`);
     } catch (err) {
-      console.warn("[Email] Ralat penghantaran emel:", err);
+      console.warn("[Email] Error dispatching email:", err);
     }
   }
 
   copyLicenseKey() {
     if (!this.lastAssignedKey || !this.lastAssignedKey.key) return;
     navigator.clipboard.writeText(this.lastAssignedKey.key).then(() => {
-      this.showToast("Kod lesen digital berjaya disalin!");
+      this.showToast("Digital license key copied to clipboard!");
     }).catch(() => {
-      this.showToast("Sila salin kod secara manual.", "warning");
+      this.showToast("Please copy the code manually.", "warning");
     });
   }
 
@@ -515,15 +516,15 @@ class SirHalimStoreApp {
     const phone = this.lastOrderData.customerPhone.replace(/[^0-9]/g, "");
     const portalUrl = this.lastAssignedKey.portalUrl || "https://kertas22026.vercel.app/";
     const text = encodeURIComponent(
-      `*RESIT PEMBELIAN & KOD LESEN SIR HALIM STORE*\n\n` +
-      `Pembeli: ${this.lastOrderData.customerName}\n` +
-      `Produk: ${this.currentProduct.title}\n` +
-      `No. Pesanan: ${this.lastOrderData.orderId}\n` +
+      `*SIR HALIM STORE PURCHASE RECEIPT & LICENSE KEY*\n\n` +
+      `Customer: ${this.lastOrderData.customerName}\n` +
+      `Product: ${this.currentProduct.title}\n` +
+      `Order No: ${this.lastOrderData.orderId}\n` +
       `ToyyibPay Bill: ${this.lastOrderData.billCode}\n` +
-      `Jumlah Bayaran: RM ${this.currentProduct.price}\n\n` +
-      `*KOD LESEN ANDA:* \n*${this.lastAssignedKey.key}*\n\n` +
-      `*Pautan Portal:* \n${portalUrl}\n\n` +
-      `_Simpan mesej ini untuk rekod rujukan anda._`
+      `Total Paid: RM ${this.currentProduct.price} (Paid)\n\n` +
+      `*YOUR LICENSE KEY:* \n*${this.lastAssignedKey.key}*\n\n` +
+      `*Portal Link:* \n${portalUrl}\n\n` +
+      `_Please keep this message for your reference._`
     );
 
     const waUrl = phone ? `https://wa.me/${phone.startsWith('6') ? phone : '6' + phone}?text=${text}` : `https://wa.me/?text=${text}`;
@@ -539,26 +540,26 @@ class SirHalimStoreApp {
     const query = input ? input.value.trim() : "";
 
     if (!query) {
-      this.showToast("Sila masukkan no. telefon, emel atau kod lesen.", "warning");
+      this.showToast("Please enter your phone number, email or license key.", "warning");
       return;
     }
 
     if (container) {
-      container.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--text-secondary);">Mencari dalam pangkalan data Supabase...</div>`;
+      container.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--text-secondary);">Searching Supabase database...</div>`;
       try {
         const results = await window.licenseEngine.lookupLicense(query);
         if (container) {
           if (results && results.length > 0) {
             container.innerHTML = results.map(r => {
               const portalUrl = r.portalUrl || (r.productType === "cids" ? "https://cidspro.vercel.app/" : `https://kertas22026.vercel.app/?key=${encodeURIComponent(r.key)}`);
-              const badgeLabel = r.productType === "cids" ? "CIDS Suites Pro (1 Tahun)" : "Fizik Kertas 2 2026";
+              const badgeLabel = r.productType === "cids" ? "CIDS Suites Pro (1 Year)" : "Physics Paper 2 2026";
               return `
               <div class="license-item-result">
                 <div class="license-result-top">
                   <div>
                     <div style="font-size: 11px; font-weight: 700; color: #ff3b30; text-transform: uppercase; margin-bottom: 2px;">${badgeLabel}</div>
                     <div class="license-result-key">${r.key}</div>
-                    <div class="license-result-meta">${r.customer_name || 'Pembeli'} • Status: <strong>${r.downloads_left || 'Aktif'}</strong></div>
+                    <div class="license-result-meta">${r.customer_name || 'Customer'} • Status: <strong>${r.downloads_left || 'Active'}</strong></div>
                   </div>
                 </div>
                 <div class="license-result-actions">
@@ -568,14 +569,14 @@ class SirHalimStoreApp {
                       <polyline points="7 10 12 15 17 10"></polyline>
                       <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Buka Portal &rsaquo;
+                    Open Portal &rsaquo;
                   </a>
-                  <button type="button" class="btn-buy-pill btn-pill-white" onclick="navigator.clipboard.writeText('${r.key}'); alert('Kod lesen ${r.key} disalin!');">
+                  <button type="button" class="btn-buy-pill btn-pill-white" onclick="navigator.clipboard.writeText('${r.key}'); alert('License key ${r.key} copied!');">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                     </svg>
-                    Salin Kod
+                    Copy Key
                   </button>
                 </div>
               </div>
@@ -584,15 +585,15 @@ class SirHalimStoreApp {
           } else {
             container.innerHTML = `
               <div style="text-align: center; padding: 25px 15px; color: var(--text-secondary); background: #f5f5f7; border-radius: 12px;">
-                Tiada rekod lesen dijumpai untuk carian: <strong>${query}</strong>.<br>
-                <span style="font-size: 12px; margin-top: 4px; display: block;">Pastikan no. telefon atau emel sama seperti semasa membuat bayaran.</span>
+                No license records found for: <strong>${query}</strong>.<br>
+                <span style="font-size: 12px; margin-top: 4px; display: block;">Please ensure the phone number or email address matches the one used during checkout.</span>
               </div>
             `;
           }
         }
       } catch (err) {
         if (container) {
-          container.innerHTML = `<div style="text-align: center; color: #ff3b30; padding: 15px;">Ralat membuat carian: ${err.message}</div>`;
+          container.innerHTML = `<div style="text-align: center; color: #ff3b30; padding: 15px;">Error performing search: ${err.message}</div>`;
         }
       }
     }
@@ -608,13 +609,13 @@ class SirHalimStoreApp {
     const orderId = params.get("order_id");
 
     if (statusId === "1" && billCode) {
-      this.showToast("Pembayaran ToyyibPay berjaya disahkan! Mengambil kunci lesen anda...", "success");
+      this.showToast("ToyyibPay payment verified successfully! Fetching your license key...", "success");
 
       const savedPending = sessionStorage.getItem("sirhalim_pending_order");
       const pendingData = savedPending ? JSON.parse(savedPending) : {};
 
       const keyRecord = await window.licenseEngine.autoClaimLicenseKey({
-        name: pendingData.customerName || "Pelanggan",
+        name: pendingData.customerName || "Customer",
         email: pendingData.customerEmail || "",
         phone: pendingData.customerPhone || "",
         orderId: orderId || pendingData.orderId || `ORD-${Date.now()}`,
@@ -626,7 +627,7 @@ class SirHalimStoreApp {
       this.lastOrderData = {
         orderId: orderId || pendingData.orderId || "ORD-PAID",
         billCode: billCode,
-        customerName: pendingData.customerName || "Pelanggan",
+        customerName: pendingData.customerName || "Customer",
         customerEmail: pendingData.customerEmail || "",
         customerPhone: pendingData.customerPhone || "",
         productTitle: pendingData.productTitle || this.currentProduct.title
