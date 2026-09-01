@@ -2,7 +2,7 @@
  * SIR HALIM STORE - MULTI-PRODUCT CLIENT APPLICATION
  * Features:
  * 1. CIDS Suites Pro (Lesen 1 Tahun / 2 Peranti) - RM 19.99
- * 2. PDF Fizik SPM Percubaan Kertas 2 2026 - RM 1.99
+ * 2. PDF Fizik SPM Percubaan Kertas 2 2026 - RM 2.99
  */
 
 class SirHalimStoreApp {
@@ -29,8 +29,8 @@ class SirHalimStoreApp {
         id: "fizik-kertas2-2026",
         title: "PDF Fizik Koleksi Mirip Soalan Trial Negeri Kertas 2 2026",
         subtitle: "Koleksi Soalan Terpilih Mengikut Topik, Jawapan Lengkap & Skema Analisis SPM 2026",
-        price: 1.99,
-        formattedPrice: "RM 1.99",
+        price: 2.99,
+        formattedPrice: "RM 2.99",
         coverImage: "assets/fizik-kertas2-2026-cover.png",
         category: "Fizik SPM Tingkatan 4 & 5",
         badge: "Paling Laris & Eksklusif",
@@ -305,7 +305,7 @@ class SirHalimStoreApp {
       }
       if (buyBtn) {
         buyBtn.setAttribute("data-product", "fizik-kertas2-2026");
-        buyBtn.innerText = "Beli Sekarang (RM 1.99)";
+        buyBtn.innerText = "Beli Sekarang (RM 2.99)";
       }
     }
 

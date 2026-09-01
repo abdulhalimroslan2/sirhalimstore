@@ -77,7 +77,7 @@ export default async function handler(req, res) {
       <div class="order-details">
         <div class="order-row"><span><strong>No. Pesanan:</strong></span> <span>${orderId || "N/A"} (${billCode || "ToyyibPay"})</span></div>
         <div class="order-row"><span><strong>Produk:</strong></span> <span>E-Book Fizik SPM Kertas 2 2026 + Skema A+</span></div>
-        <div class="order-row"><span><strong>Jumlah Bayaran:</strong></span> <span style="color: #0071e3; font-weight: 700;">RM ${amount || "1.99"} (Lunas)</span></div>
+        <div class="order-row"><span><strong>Jumlah Bayaran:</strong></span> <span style="color: #0071e3; font-weight: 700;">RM ${amount || "2.99"} (Lunas)</span></div>
         <div class="order-row"><span><strong>Had Muat Turun:</strong></span> <span>4 Kali Akses Penuh</span></div>
       </div>
     </div>
@@ -96,7 +96,7 @@ export default async function handler(req, res) {
       to_email: customerEmail,
       subject: `[Sir Halim Store] Kunci Lesen E-Book Fizik SPM 2026: ${licenseKey}`,
       from_name: "Sir Halim Store",
-      message: `Salam ${customerName || "Pelanggan"},\n\nTerima kasih atas pembelian anda!\n\nKOD LESEN DIGITAL ANDA:\n${licenseKey}\n\nPAUTAN PORTAL MUAT TURUN (Terus Buka):\n${portalLink}\n\nNo. Pesanan: ${orderId}\nJumlah Bayaran: RM ${amount || "1.99"} (Lunas)\n\nSelamat mengulangkaji dan semoga cemerlang SPM 2026!`,
+      message: `Salam ${customerName || "Pelanggan"},\n\nTerima kasih atas pembelian anda!\n\nKOD LESEN DIGITAL ANDA:\n${licenseKey}\n\nPAUTAN PORTAL MUAT TURUN (Terus Buka):\n${portalLink}\n\nNo. Pesanan: ${orderId}\nJumlah Bayaran: RM ${amount || "2.99"} (Lunas)\n\nSelamat mengulangkaji dan semoga cemerlang SPM 2026!`,
       html: htmlContent
     };
 
