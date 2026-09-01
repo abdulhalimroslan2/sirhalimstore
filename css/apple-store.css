@@ -217,10 +217,11 @@ button {
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: opacity 0.28s cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 998;
 }
 
+.globalnav.flyout-open ~ .globalnav-backdrop,
 .globalnav-backdrop.is-active {
   opacity: 1;
   pointer-events: auto;
@@ -232,24 +233,34 @@ button {
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
   max-height: 0;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   overflow: hidden;
-  transition: max-height 0.36s cubic-bezier(0.28, 0.11, 0.32, 1),
-              opacity 0.24s ease,
-              visibility 0.24s ease;
+  transition: max-height 0.32s cubic-bezier(0.28, 0.11, 0.32, 1),
+              opacity 0.22s ease,
+              visibility 0.22s ease;
   z-index: 999;
 }
 
-.globalnav.flyout-open .globalnav-flyout {
-  max-height: 540px;
+/* Open states */
+.globalnav.flyout-open .globalnav-flyout,
+.globalnav:hover .globalnav-flyout {
+  max-height: 560px;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
+}
+
+.globalnav:hover,
+.globalnav.flyout-open {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 .globalnav-flyout-inner {
@@ -265,11 +276,13 @@ button {
   grid-template-columns: minmax(260px, 320px) minmax(180px, 230px) minmax(200px, 1fr);
   gap: 40px;
   opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.24s cubic-bezier(0.25, 0.1, 0.25, 1),
-              transform 0.24s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateY(-6px);
+  transition: opacity 0.22s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.22s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+/* Fallback default active panel when nav hovered */
+.flyout-panel[data-panel="store"],
 .flyout-panel.is-active {
   display: grid;
   opacity: 1;
