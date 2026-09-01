@@ -838,7 +838,7 @@ button {
 .scorehack-content {
   position: relative !important;
   z-index: 2 !important;
-  padding: 30px 30px 20px !important;
+  padding: 26px 26px 12px !important;
   pointer-events: none;
 }
 
@@ -847,26 +847,26 @@ button {
   font-weight: 400 !important;
   color: #6e6e73 !important;
   letter-spacing: -0.01em !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 6px !important;
   text-transform: none !important;
 }
 
 .scorehack-headline {
-  font-size: 26px !important;
+  font-size: 24px !important;
   font-weight: 700 !important;
   line-height: 1.15 !important;
   color: #1d1d1f !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 8px !important;
   letter-spacing: -0.015em !important;
 }
 
 .scorehack-subtext {
-  font-size: 14px !important;
+  font-size: 13.5px !important;
   font-weight: 400 !important;
-  line-height: 1.35 !important;
+  line-height: 1.32 !important;
   color: #1d1d1f !important;
   letter-spacing: -0.01em !important;
-  max-width: 320px !important;
+  max-width: 290px !important;
 }
 
 .product-card:hover .specialist-portrait-img {
