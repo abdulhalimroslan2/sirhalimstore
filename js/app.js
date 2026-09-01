@@ -56,6 +56,7 @@ class SirHalimStoreApp {
   init() {
     this.bindEvents();
     this.initCarousel();
+    this.initGlobalNavFlyout();
     this.checkUrlParams();
     console.log("🍏 Sir Halim Store App Initialized with Multi-Product Suite (English).");
   }
@@ -172,6 +173,85 @@ class SirHalimStoreApp {
   initCarousel() {
     const carousel = document.getElementById("cardsCarousel");
     if (!carousel) return;
+  }
+
+  // ==========================================
+  // APPLE DESKTOP MEGA HOVER DROPDOWN FLYOUT
+  // ==========================================
+  initGlobalNavFlyout() {
+    const globalNav = document.getElementById("globalNav");
+    const backdrop = document.getElementById("globalnavBackdrop");
+    const flyoutContainer = document.getElementById("globalNavFlyout");
+    if (!globalNav || !backdrop || !flyoutContainer) return;
+
+    const navItems = document.querySelectorAll(".globalnav-item[data-flyout]");
+    const panels = document.querySelectorAll(".flyout-panel");
+    let closeTimeout = null;
+
+    const openFlyout = (targetPanelId, navItem) => {
+      clearTimeout(closeTimeout);
+      navItems.forEach(item => item.classList.remove("is-hovered"));
+      if (navItem) navItem.classList.add("is-hovered");
+
+      panels.forEach(p => {
+        if (p.getAttribute("data-panel") === targetPanelId) {
+          p.classList.add("is-active");
+        } else {
+          p.classList.remove("is-active");
+        }
+      });
+
+      globalNav.classList.add("flyout-open");
+      backdrop.classList.add("is-active");
+    };
+
+    const closeFlyout = (immediate = false) => {
+      clearTimeout(closeTimeout);
+      const doClose = () => {
+        globalNav.classList.remove("flyout-open");
+        backdrop.classList.remove("is-active");
+        navItems.forEach(item => item.classList.remove("is-hovered"));
+        panels.forEach(p => p.classList.remove("is-active"));
+      };
+
+      if (immediate) {
+        doClose();
+      } else {
+        closeTimeout = setTimeout(doClose, 160);
+      }
+    };
+
+    // Attach listeners to nav items
+    navItems.forEach(item => {
+      const targetPanel = item.getAttribute("data-flyout");
+      item.addEventListener("mouseenter", () => {
+        if (window.innerWidth > 834) {
+          openFlyout(targetPanel, item);
+        }
+      });
+    });
+
+    // Keep open when hovering inside globalNav or flyout container
+    globalNav.addEventListener("mouseenter", () => {
+      clearTimeout(closeTimeout);
+    });
+
+    globalNav.addEventListener("mouseleave", (e) => {
+      if (window.innerWidth > 834) {
+        closeFlyout(false);
+      }
+    });
+
+    // Close when hovering over backdrop or clicking backdrop
+    backdrop.addEventListener("mouseenter", () => closeFlyout(true));
+    backdrop.addEventListener("click", () => closeFlyout(true));
+
+    // Close when clicking any link inside flyout
+    document.querySelectorAll(".flyout-panel a").forEach(link => {
+      link.addEventListener("click", () => {
+        closeFlyout(true);
+      });
+    });
   }
 
   // ==========================================

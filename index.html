@@ -18,7 +18,12 @@
   <!-- ==========================================================================
        1. APPLE GLOBAL NAVIGATION (100% APPLE MOBILE WITH 2-LINES MENU BUTTON)
        ========================================================================== -->
-  <nav class="globalnav">
+  <!-- ==========================================================================
+       1. APPLE GLOBAL NAVIGATION (WITH DESKTOP HOVER MEGA DROPDOWN & MOBILE DRAWER)
+       ========================================================================== -->
+  <div class="globalnav-backdrop" id="globalnavBackdrop"></div>
+
+  <nav class="globalnav" id="globalNav">
     <div class="globalnav-content">
       <!-- Apple Logo -->
       <a href="#" class="globalnav-logo" aria-label="Apple">
@@ -29,13 +34,13 @@
 
       <!-- Desktop Center Navigation List -->
       <ul class="globalnav-list">
-        <li class="globalnav-item"><a href="#store">Store</a></li>
-        <li class="globalnav-item"><a href="#featured" data-action="open-buy-sheet" data-product="cids-suites-pro">CIDS Pro</a></li>
-        <li class="globalnav-item"><a href="#featured" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Paper 2</a></li>
-        <li class="globalnav-item"><a href="#featured">Paper 1 & 3</a></li>
-        <li class="globalnav-item"><a href="#featured">SPM Scheme</a></li>
-        <li class="globalnav-item"><a href="https://cidspro.vercel.app/" target="_blank">License Portal</a></li>
-        <li class="globalnav-item"><a href="#help">Support</a></li>
+        <li class="globalnav-item" data-flyout="store"><a href="#store">Store</a></li>
+        <li class="globalnav-item" data-flyout="cids-pro"><a href="#featured" data-action="open-buy-sheet" data-product="cids-suites-pro">CIDS Pro</a></li>
+        <li class="globalnav-item" data-flyout="paper-2"><a href="#featured" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Paper 2</a></li>
+        <li class="globalnav-item" data-flyout="paper-1-3"><a href="#featured">Paper 1 & 3</a></li>
+        <li class="globalnav-item" data-flyout="spm-scheme"><a href="#featured">SPM Scheme</a></li>
+        <li class="globalnav-item" data-flyout="license-portal"><a href="https://cidspro.vercel.app/" target="_blank">License Portal</a></li>
+        <li class="globalnav-item" data-flyout="support"><a href="#help">Support</a></li>
       </ul>
 
       <!-- Right Action Items (Search, Bag, and 2-Lines Menu Button) -->
@@ -57,6 +62,229 @@
             <line x1="2" y1="12.5" x2="16" y2="12.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
         </button>
+      </div>
+    </div>
+
+    <!-- APPLE MEGA DROPDOWN FLYOUT (100% APPLE STORE REPLICA) -->
+    <div class="globalnav-flyout" id="globalNavFlyout">
+      <div class="globalnav-flyout-inner">
+        
+        <!-- PANEL 1: STORE -->
+        <div class="flyout-panel" data-panel="store">
+          <div class="flyout-col">
+            <div class="flyout-col-header">Explore Store</div>
+            <ul class="flyout-big-list">
+              <li><a href="#store" class="flyout-big-link">Shop the Latest</a></li>
+              <li><a href="#featured" class="flyout-big-link" data-action="open-detail-sheet" data-product="cids-suites-pro">CIDS Suites Pro</a></li>
+              <li><a href="#featured" class="flyout-big-link" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">Physics Paper 2</a></li>
+              <li><a href="https://physflix.vercel.app/" target="_blank" class="flyout-big-link">PhysFlix Academy</a></li>
+              <li><a href="javascript:void(0)" class="flyout-big-link" style="opacity: 0.5; cursor: default;">Sir Halim Gift Card</a></li>
+            </ul>
+            <a href="#store" class="flyout-sub-explore">Explore Store &rsaquo;</a>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Quick Links</div>
+            <ul class="flyout-small-list">
+              <li><a href="#" class="flyout-small-link" data-action="open-license-checker">Check License Status</a></li>
+              <li><a href="#features" class="flyout-small-link">How to Order (ToyyibPay FPX)</a></li>
+              <li><a href="https://cidspro.vercel.app/" target="_blank" class="flyout-small-link">Download Portal</a></li>
+              <li><a href="#help" class="flyout-small-link">Support & FAQs</a></li>
+            </ul>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Shop Special</div>
+            <ul class="flyout-small-list">
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Teacher & School Bulk License</a></li>
+              <li><a href="#featured" class="flyout-small-link" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">SPM 2026 Trial Study Pack</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Connect with Specialist</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PANEL 2: CIDS PRO -->
+        <div class="flyout-panel" data-panel="cids-pro">
+          <div class="flyout-col">
+            <div class="flyout-col-header">Explore CIDS Pro</div>
+            <ul class="flyout-big-list">
+              <li><a href="#featured" class="flyout-big-link" data-action="open-detail-sheet" data-product="cids-suites-pro">Explore CIDS Suites Pro</a></li>
+              <li><a href="#featured" class="flyout-big-link" data-action="open-buy-sheet" data-product="cids-suites-pro">1-Year License Plan</a></li>
+              <li><a href="https://cidspro.vercel.app/" target="_blank" class="flyout-big-link">Smart Lesson Planning (RPH)</a></li>
+              <li><a href="https://cidspro.vercel.app/" target="_blank" class="flyout-big-link">DSKP & Cloud Sync</a></li>
+              <li><a href="https://cidspro.vercel.app/" target="_blank" class="flyout-big-link">2 Devices Activation</a></li>
+            </ul>
+            <a href="https://cidspro.vercel.app/" target="_blank" class="flyout-sub-explore">Explore CIDS Suites Pro &rsaquo;</a>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Get Started</div>
+            <ul class="flyout-small-list">
+              <li><a href="#" class="flyout-small-link" data-action="open-buy-sheet" data-product="cids-suites-pro">Buy CIDS Pro (RM 19.99)</a></li>
+              <li><a href="https://www.youtube.com/watch?v=ibO6iaQAVqE" target="_blank" class="flyout-small-link">Watch YouTube Setup Guide</a></li>
+              <li><a href="https://cidspro.vercel.app/" target="_blank" class="flyout-small-link">Download Free Trial App</a></li>
+              <li><a href="#" class="flyout-small-link" data-action="open-license-checker">Check License Key Status</a></li>
+            </ul>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Portals & Tools</div>
+            <ul class="flyout-small-list">
+              <li><a href="https://cidspro.vercel.app/" target="_blank" class="flyout-small-link">Official Web Portal</a></li>
+              <li><a href="https://cidskey.vercel.app/admin" target="_blank" class="flyout-small-link">CIDS Key Admin Portal</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Teacher Tech Support</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PANEL 3: PAPER 2 -->
+        <div class="flyout-panel" data-panel="paper-2">
+          <div class="flyout-col">
+            <div class="flyout-col-header">Explore Paper 2</div>
+            <ul class="flyout-big-list">
+              <li><a href="#featured" class="flyout-big-link" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">Physics Paper 2 TRIAL</a></li>
+              <li><a href="#featured" class="flyout-big-link" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Topical State Trial Modules</a></li>
+              <li><a href="https://kertas22026.vercel.app/" target="_blank" class="flyout-big-link">Section A, B & C Format</a></li>
+              <li><a href="https://kertas22026.vercel.app/" target="_blank" class="flyout-big-link">KBAT Question Drill</a></li>
+            </ul>
+            <a href="https://kertas22026.vercel.app/" target="_blank" class="flyout-sub-explore">Explore Paper 2 &rsaquo;</a>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Order & Access</div>
+            <ul class="flyout-small-list">
+              <li><a href="#" class="flyout-small-link" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">Buy Paper 2 (RM 2.99)</a></li>
+              <li><a href="https://kertas22026.vercel.app/" target="_blank" class="flyout-small-link">Open Download Portal</a></li>
+              <li><a href="#" class="flyout-small-link" data-action="open-license-checker">Verify Purchase Key</a></li>
+            </ul>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Related Resources</div>
+            <ul class="flyout-small-list">
+              <li><a href="#featured" class="flyout-small-link">Full A+ Marking Scheme</a></li>
+              <li><a href="https://physflix.vercel.app/" target="_blank" class="flyout-small-link">PhysFlix Video Solutions</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Physics Telegram Community</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PANEL 4: PAPER 1 & 3 -->
+        <div class="flyout-panel" data-panel="paper-1-3">
+          <div class="flyout-col">
+            <div class="flyout-col-header">Explore Paper 1 & 3</div>
+            <ul class="flyout-big-list">
+              <li><a href="#featured" class="flyout-big-link">Paper 1 (Objective 40 Qs)</a></li>
+              <li><a href="#featured" class="flyout-big-link">Paper 3 (Amali Practical)</a></li>
+              <li><a href="#featured" class="flyout-big-link">Physics Formula Sheet</a></li>
+              <li><a href="#featured" class="flyout-big-link">Topical Mastery Series</a></li>
+            </ul>
+            <a href="#featured" class="flyout-sub-explore">Explore Paper 1 & 3 &rsaquo;</a>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Study Resources</div>
+            <ul class="flyout-small-list">
+              <li><a href="#featured" class="flyout-small-link">State Trial Compilations</a></li>
+              <li><a href="#featured" class="flyout-small-link">Experiment Analysis Notes</a></li>
+              <li><a href="https://physflix.vercel.app/" target="_blank" class="flyout-small-link">PhysFlix Free Lessons</a></li>
+            </ul>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Release Updates</div>
+            <ul class="flyout-small-list">
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">SPM 2026 Release Schedule</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Join Announcement Channel</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PANEL 5: SPM SCHEME -->
+        <div class="flyout-panel" data-panel="spm-scheme">
+          <div class="flyout-col">
+            <div class="flyout-col-header">Explore SPM Scheme</div>
+            <ul class="flyout-big-list">
+              <li><a href="#featured" class="flyout-big-link">SPM 2026 Scoring Standards</a></li>
+              <li><a href="#featured" class="flyout-big-link">Full Working Steps</a></li>
+              <li><a href="#featured" class="flyout-big-link">Keyword Scoring Guide</a></li>
+              <li><a href="#featured" class="flyout-big-link">Examiner Pitfalls & Tips</a></li>
+            </ul>
+            <a href="#featured" class="flyout-sub-explore">Explore SPM Scheme &rsaquo;</a>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Included with Modules</div>
+            <ul class="flyout-small-list">
+              <li><a href="#featured" class="flyout-small-link" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">Paper 2 Complete Scheme</a></li>
+              <li><a href="#featured" class="flyout-small-link">Graph & Experiment Workings</a></li>
+              <li><a href="#featured" class="flyout-small-link">Physics Definition Glossary</a></li>
+            </ul>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Smart Learning</div>
+            <ul class="flyout-small-list">
+              <li><a href="https://physflix.vercel.app/" target="_blank" class="flyout-small-link">PhysFlix AI Physics Tutor</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Ask Sir Halim on Telegram</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PANEL 6: LICENSE PORTAL -->
+        <div class="flyout-panel" data-panel="license-portal">
+          <div class="flyout-col">
+            <div class="flyout-col-header">Explore License Portal</div>
+            <ul class="flyout-big-list">
+              <li><a href="#" class="flyout-big-link" data-action="open-license-checker">Check License Status</a></li>
+              <li><a href="https://cidspro.vercel.app/" target="_blank" class="flyout-big-link">CIDS Suites Pro Portal</a></li>
+              <li><a href="https://kertas22026.vercel.app/" target="_blank" class="flyout-big-link">Physics 2026 Portal</a></li>
+              <li><a href="#" class="flyout-big-link" data-action="open-license-checker">Automatic Key Generator</a></li>
+            </ul>
+            <a href="https://cidspro.vercel.app/" target="_blank" class="flyout-sub-explore">Explore License Portal &rsaquo;</a>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Admin Portals</div>
+            <ul class="flyout-small-list">
+              <li><a href="https://cidskey.vercel.app/admin" target="_blank" class="flyout-small-link">CIDS Key Admin Panel</a></li>
+              <li><a href="https://kertas2admin.vercel.app/" target="_blank" class="flyout-small-link">Physics Key Admin Panel</a></li>
+              <li><a href="https://toyyibpay.com" target="_blank" class="flyout-small-link">ToyyibPay Transactions</a></li>
+            </ul>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Support & Troubleshooting</div>
+            <ul class="flyout-small-list">
+              <li><a href="#help" class="flyout-small-link">2 Devices Activation Limit</a></li>
+              <li><a href="#help" class="flyout-small-link">Download Reset Requests</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Contact Sir Halim</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PANEL 7: SUPPORT (100% EXACT REPLICA OF USER REFERENCE IMAGE) -->
+        <div class="flyout-panel" data-panel="support">
+          <div class="flyout-col">
+            <div class="flyout-col-header">Explore Support</div>
+            <ul class="flyout-big-list">
+              <li><a href="#featured" class="flyout-big-link" data-action="open-detail-sheet" data-product="cids-suites-pro">CIDS Suites Pro</a></li>
+              <li><a href="#featured" class="flyout-big-link" data-action="open-detail-sheet" data-product="fizik-kertas2-2026">Physics Paper 2</a></li>
+              <li><a href="https://physflix.vercel.app/" target="_blank" class="flyout-big-link">PhysFlix Academy</a></li>
+              <li><a href="#" class="flyout-big-link" data-action="open-license-checker">License Keys</a></li>
+              <li><a href="#features" class="flyout-big-link">ToyyibPay Payments</a></li>
+              <li><a href="https://www.youtube.com/watch?v=ibO6iaQAVqE" target="_blank" class="flyout-big-link">Setup & Installation</a></li>
+            </ul>
+            <a href="#help" class="flyout-sub-explore">Explore Support &rsaquo;</a>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Get Help</div>
+            <ul class="flyout-small-list">
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Community (Telegram)</a></li>
+              <li><a href="#" class="flyout-small-link" data-action="open-license-checker">Check License Key</a></li>
+              <li><a href="https://www.youtube.com/watch?v=ibO6iaQAVqE" target="_blank" class="flyout-small-link">Video Setup Guide</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Key Recovery & Repair</a></li>
+            </ul>
+          </div>
+          <div class="flyout-col">
+            <div class="flyout-col-header">Helpful Topics</div>
+            <ul class="flyout-small-list">
+              <li><a href="#featured" class="flyout-small-link">2 Devices License Activation</a></li>
+              <li><a href="#featured" class="flyout-small-link">PDF Download Quota (4x)</a></li>
+              <li><a href="#features" class="flyout-small-link">Payment & Receipt Verification</a></li>
+              <li><a href="https://t.me/halimroslan" target="_blank" class="flyout-small-link">Connect with Specialist</a></li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </nav>

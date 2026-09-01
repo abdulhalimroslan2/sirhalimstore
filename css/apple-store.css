@@ -99,6 +99,12 @@ button {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   z-index: 1000;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.globalnav.flyout-open {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 .globalnav-content {
@@ -134,6 +140,13 @@ button {
   flex: 1;
   list-style: none;
   padding: 0 16px;
+  height: 100%;
+}
+
+.globalnav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .globalnav-item a {
@@ -143,10 +156,13 @@ button {
   transition: opacity 0.2s;
   display: flex;
   align-items: center;
+  height: 100%;
+  padding: 0 8px;
   text-decoration: none !important;
 }
 
-.globalnav-item a:hover {
+.globalnav-item:hover a,
+.globalnav-item.is-hovered a {
   opacity: 1;
 }
 
@@ -187,6 +203,149 @@ button {
 }
 .globalnav-menutrigger-btn:hover {
   opacity: 1;
+}
+
+/* ==========================================================================
+   APPLE DESKTOP MEGA HOVER DROPDOWN (100% APPLE STORE REPLICA)
+   ========================================================================== */
+.globalnav-backdrop {
+  position: fixed;
+  inset: 0;
+  top: var(--nav-height);
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  z-index: 998;
+}
+
+.globalnav-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.globalnav-flyout {
+  position: absolute;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.10);
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: max-height 0.36s cubic-bezier(0.28, 0.11, 0.32, 1),
+              opacity 0.24s ease,
+              visibility 0.24s ease;
+  z-index: 999;
+}
+
+.globalnav.flyout-open .globalnav-flyout {
+  max-height: 540px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.globalnav-flyout-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 38px 24px 48px;
+  position: relative;
+}
+
+.flyout-panel {
+  display: none;
+  width: 100%;
+  grid-template-columns: minmax(260px, 320px) minmax(180px, 230px) minmax(200px, 1fr);
+  gap: 40px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.24s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.24s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.flyout-panel.is-active {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flyout-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flyout-col-header {
+  font-size: 12px;
+  font-weight: 400;
+  color: #86868b;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+/* Column 1 - Large Typography Links */
+.flyout-big-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flyout-big-link {
+  font-size: 23px;
+  font-weight: 700;
+  color: #1d1d1f;
+  line-height: 1.35;
+  letter-spacing: -0.022em;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.flyout-big-link:hover {
+  opacity: 0.6;
+}
+
+.flyout-sub-explore {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1d1d1f;
+  margin-top: 16px;
+  display: inline-block;
+  text-decoration: none !important;
+  transition: color 0.15s;
+}
+.flyout-sub-explore:hover {
+  color: var(--apple-blue);
+  text-decoration: underline !important;
+}
+
+/* Column 2 & 3 - Small Secondary Links */
+.flyout-small-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flyout-small-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1d1d1f;
+  line-height: 1.6;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: color 0.15s ease;
+}
+
+.flyout-small-link:hover {
+  color: var(--apple-blue);
 }
 
 /* ==========================================================================
@@ -996,6 +1155,10 @@ button {
 @media (max-width: 834px) {
   /* Global Nav Mobile */
   .globalnav-list {
+    display: none !important;
+  }
+  .globalnav-flyout,
+  .globalnav-backdrop {
     display: none !important;
   }
   .globalnav-menutrigger-btn {
