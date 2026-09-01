@@ -617,70 +617,21 @@ button {
   scrollbar-width: none;
 }
 
-.help-card-item {
-  flex: 0 0 380px;
-  height: 480px;
-  border-radius: var(--radius-card);
-  background: var(--bg-card);
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--border-card);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.help-card-item:hover {
-  transform: scale(1.015);
-  box-shadow: var(--shadow-hover);
-}
-
-.help-card-item.bg-dark-photo {
-  background: linear-gradient(180deg, #1d1d1f 0%, #000000 100%);
-  color: #ffffff;
-}
-
-.help-eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: -0.01em;
-  margin-bottom: 6px;
-}
-
-.help-card-item.bg-dark-photo .help-eyebrow {
-  color: #a1a1a6;
-}
-
-.help-card-title {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.16;
-  letter-spacing: -0.015em;
-  color: #1d1d1f;
-  margin-bottom: 6px;
-}
-
-.help-card-item.bg-dark-photo .help-card-title {
-  color: #ffffff;
-}
-
-.help-media-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .specialist-portrait-img {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 50%;
+  width: 100%;
+  max-height: 330px;
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: -4px;
+}
+
+.product-card:hover .specialist-portrait-img {
+  transform: scale(1.04);
 }
 
 /* ==========================================================================
