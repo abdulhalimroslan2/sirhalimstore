@@ -430,16 +430,21 @@
     <div class="cards-carousel-container">
       <div class="cards-scroll-track" id="cardsCarousel">
 
-        <!-- CARD 1: FIZIK KERTAS 2 2026 (BLACK CARD - UTAMA) -->
-        <div class="product-card card-dark" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">
-          <div class="card-top-info">
+        <!-- CARD 1: FIZIK KERTAS 2 2026 (BLACK CARD - CINEMATIC VIDEO BACKDROP) -->
+        <div class="product-card card-dark card-cinematic-video" data-action="open-buy-sheet" data-product="fizik-kertas2-2026">
+          <video class="card-video-backdrop" autoplay muted loop playsinline preload="auto">
+            <source src="assets/physics-paper2-cinematic.mp4" type="video/mp4">
+          </video>
+          <div class="card-video-overlay"></div>
+
+          <div class="card-top-info" style="position: relative; z-index: 3;">
             <div class="card-tag-red">ORDER NOW</div>
             <h3 class="card-headline">Physics Paper 2 TRIAL</h3>
             <p class="card-subtext">Curated SPM state trial exam questions with complete marking scheme analysis.</p>
             <div class="card-pricing">From RM 2.99</div>
           </div>
 
-          <div class="card-image-stage">
+          <div class="card-image-stage" style="position: relative; z-index: 3;">
             <img src="assets/fizik-kertas2-icon.png" alt="Physics Paper 2 TRIAL" class="card-product-img">
           </div>
         </div>

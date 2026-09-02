@@ -57,6 +57,7 @@ class SirHalimStoreApp {
     this.bindEvents();
     this.initCarousel();
     this.initGlobalNavFlyout();
+    this.initCinematicCardVideo();
     this.checkUrlParams();
     console.log("🍏 Sir Halim Store App Initialized with Multi-Product Suite (English).");
   }
@@ -173,6 +174,69 @@ class SirHalimStoreApp {
   initCarousel() {
     const carousel = document.getElementById("cardsCarousel");
     if (!carousel) return;
+  }
+
+  // ==========================================
+  // CINEMATIC VIDEO CARD BACKGROUND ENGINE
+  // ==========================================
+  initCinematicCardVideo() {
+    const video = document.querySelector(".card-video-backdrop");
+    if (!video) return;
+
+    // Autoplay on load with user gesture fallback
+    const playVideo = () => {
+      video.muted = true;
+      video.playsInline = true;
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          const resume = () => {
+            video.play().catch(() => {});
+            document.removeEventListener("click", resume);
+            document.removeEventListener("scroll", resume);
+            document.removeEventListener("touchstart", resume);
+          };
+          document.addEventListener("click", resume, { passive: true });
+          document.addEventListener("scroll", resume, { passive: true });
+          document.addEventListener("touchstart", resume, { passive: true });
+        });
+      }
+    };
+
+    if (document.readyState === "complete") {
+      playVideo();
+    } else {
+      window.addEventListener("load", playVideo);
+    }
+
+    // Interactive Scroll Looping & Dynamic Playback Rate
+    let scrollTimeout = null;
+    window.addEventListener("scroll", () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      }
+      video.playbackRate = 1.25;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        video.playbackRate = 1.0;
+      }, 150);
+    }, { passive: true });
+
+    // Viewport Intersection Observer for optimal performance
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.15 });
+
+      const card = video.closest(".product-card");
+      if (card) observer.observe(card);
+    }
   }
 
   // ==========================================
