@@ -453,35 +453,16 @@ class SirHalimStoreApp {
       // 1. Process Payment via ToyyibPay Module
       const paymentResult = await window.toyyibPayManager.processPayment(orderPayload);
 
-      if (paymentResult.success) {
-        if (paymentResult.paymentUrl && !paymentResult.simulated) {
-          // Save pending state
-          sessionStorage.setItem("sirhalim_pending_order", JSON.stringify(orderPayload));
+      if (paymentResult.success && paymentResult.paymentUrl) {
+        // Save pending state for return callback
+        sessionStorage.setItem("sirhalim_pending_order", JSON.stringify(orderPayload));
+        this.showToast("Redirecting to ToyyibPay FPX payment gateway...", "info");
+        setTimeout(() => {
           window.location.href = paymentResult.paymentUrl;
-          return;
-        }
-
-        // 2. Auto Claim / Pick up license key from Supabase Cloud
-        const keyRecord = await window.licenseEngine.autoClaimLicenseKey({
-          name: name,
-          email: email,
-          phone: phone,
-          orderId: orderId,
-          billCode: paymentResult.billCode || "SIM-" + Date.now(),
-          engineType: this.currentProduct.engineType
-        });
-
-        this.lastAssignedKey = keyRecord;
-        this.lastOrderData = {
-          ...orderPayload,
-          billCode: paymentResult.billCode
-        };
-
-        const buyModal = document.getElementById("appleBuySheetModal");
-        if (buyModal) buyModal.classList.remove("active");
-
-        this.showOrderReceipt(this.lastOrderData, keyRecord);
-        this.triggerConfetti();
+        }, 300);
+        return;
+      } else {
+        throw new Error(paymentResult.error || "Unable to connect to ToyyibPay payment gateway.");
       }
     } catch (err) {
       console.error("Checkout Error:", err);

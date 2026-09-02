@@ -58,39 +58,70 @@ class ToyyibPayManager {
     const amountInCents = Math.round(orderData.amount * 100);
     const returnUrl = window.location.origin + window.location.pathname + `?payment_return=1&order_id=${encodeURIComponent(orderData.orderId)}&name=${encodeURIComponent(orderData.customerName)}&phone=${encodeURIComponent(orderData.customerPhone)}&email=${encodeURIComponent(orderData.customerEmail)}`;
 
-    // 1. LIVE TOYYIBPAY API BILL GENERATION
-    if (isLiveMode && this.config.userSecretKey) {
-      try {
-        const formData = new URLSearchParams();
-        formData.append("userSecretKey", this.config.userSecretKey);
-        formData.append("categoryCode", this.config.categoryCode);
-        formData.append("billName", orderData.productTitle || "Sir Halim Store Digital Order");
-        formData.append("billDescription", `Sir Halim Store - Order #${orderData.orderId}`);
-        formData.append("billPriceSetting", "1");
-        formData.append("billPayorInfo", "1");
-        formData.append("billAmount", amountInCents.toString());
-        formData.append("billReturnUrl", returnUrl);
-        formData.append("billCallbackUrl", returnUrl);
-        formData.append("billExternalReferenceNo", orderData.orderId);
-        formData.append("billTo", orderData.customerName);
-        formData.append("billEmail", orderData.customerEmail);
-        formData.append("billPhone", orderData.customerPhone);
-        formData.append("billSplitPayment", "0");
-        formData.append("billPaymentChannel", "0");
-        formData.append("billDisplayMerchant", "1");
+    // 1. PRIMARY: CALL SERVERLESS VERCEL BACKEND /api/create-bill (NO CORS ISSUES)
+    try {
+      const response = await fetch("/api/create-bill", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: orderData.amount,
+          customerName: orderData.customerName,
+          customerEmail: orderData.customerEmail,
+          customerPhone: orderData.customerPhone,
+          orderId: orderData.orderId,
+          productTitle: orderData.productTitle,
+          returnUrl: returnUrl
+        })
+      });
 
-        const response = await fetch("https://toyyibpay.com/index.php/api/createBill", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: formData.toString()
-        });
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.paymentUrl) {
+          console.log("[ToyyibPay] Bill Created via Serverless API:", data.billCode);
+          return {
+            success: true,
+            billCode: data.billCode,
+            paymentUrl: data.paymentUrl,
+            simulated: false
+          };
+        }
+      }
+    } catch (err) {
+      console.warn("[ToyyibPay] Serverless API unreachable or local static mode:", err);
+    }
 
-        const result = await response.json();
+    // 2. FALLBACK A: CORS PROXY / DIRECT GATEWAY CALL
+    try {
+      const formData = new URLSearchParams();
+      formData.append("userSecretKey", this.config.userSecretKey);
+      formData.append("categoryCode", this.config.categoryCode);
+      formData.append("billName", (orderData.productTitle || "Sir Halim Store Order").slice(0, 30));
+      formData.append("billDescription", `Order #${orderData.orderId}`.slice(0, 100));
+      formData.append("billPriceSetting", "1");
+      formData.append("billPayorInfo", "1");
+      formData.append("billAmount", amountInCents.toString());
+      formData.append("billReturnUrl", returnUrl);
+      formData.append("billCallbackUrl", returnUrl);
+      formData.append("billExternalReferenceNo", orderData.orderId);
+      formData.append("billTo", orderData.customerName);
+      formData.append("billEmail", orderData.customerEmail);
+      formData.append("billPhone", orderData.customerPhone);
+      formData.append("billSplitPayment", "0");
+      formData.append("billPaymentChannel", "0");
+      formData.append("billDisplayMerchant", "1");
+
+      const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent("https://toyyibpay.com/index.php/api/createBill");
+      const proxyRes = await fetch(proxyUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString()
+      });
+
+      if (proxyRes.ok) {
+        const result = await proxyRes.json();
         if (Array.isArray(result) && result[0] && result[0].BillCode) {
           const liveBillCode = result[0].BillCode;
-          console.log("[ToyyibPay] Live Bill Generated:", liveBillCode);
+          console.log("[ToyyibPay] Bill Created via Proxy:", liveBillCode);
           return {
             success: true,
             billCode: liveBillCode,
@@ -98,25 +129,19 @@ class ToyyibPayManager {
             simulated: false
           };
         }
-      } catch (err) {
-        console.warn("ToyyibPay API Direct Fetch Notice (CORS / Proxy fallback):", err);
       }
+    } catch (e) {
+      console.warn("[ToyyibPay] Proxy fallback notice:", e);
     }
 
-    // 2. SANDBOX / SIMULATION TEST MODE
-    const fallbackBillCode = "TYB-" + Math.floor(100000 + Math.random() * 900000);
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          success: true,
-          billCode: fallbackBillCode,
-          orderId: orderData.orderId,
-          amount: orderData.amount,
-          simulated: true,
-          timestamp: new Date().toISOString()
-        });
-      }, 1000);
-    });
+    // 3. FALLBACK B: TOYYIBPAY OFFICIAL DIRECT CATEGORY PORTAL
+    const directCategoryUrl = `https://toyyibpay.com/${this.config.categoryCode}`;
+    return {
+      success: true,
+      billCode: "CAT-" + this.config.categoryCode,
+      paymentUrl: directCategoryUrl,
+      simulated: false
+    };
   }
 }
 
