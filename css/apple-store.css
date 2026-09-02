@@ -793,13 +793,13 @@ button {
 }
 
 .product-card.card-cinematic-video .card-product-img {
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.75));
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  filter: none !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card.card-cinematic-video:hover .card-product-img {
-  transform: scale(1.06) translateY(-4px);
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.90));
+  transform: scale(1.05) translateY(-3px);
+  filter: none !important;
 }
 
 .card-bottom-btn-row {
