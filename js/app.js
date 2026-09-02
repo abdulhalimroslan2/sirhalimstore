@@ -151,10 +151,10 @@ class SirHalimStoreApp {
       copyKeyBtn.addEventListener("click", () => this.copyLicenseKey());
     }
 
-    // WhatsApp Receipt Button
-    const waReceiptBtn = document.getElementById("receiptWhatsAppBtn");
-    if (waReceiptBtn) {
-      waReceiptBtn.addEventListener("click", () => this.sendWhatsAppReceipt());
+    // Telegram Receipt Button
+    const tgReceiptBtn = document.getElementById("receiptTelegramBtn");
+    if (tgReceiptBtn) {
+      tgReceiptBtn.addEventListener("click", () => this.sendTelegramReceipt());
     }
 
     // Search License Form
@@ -489,7 +489,11 @@ class SirHalimStoreApp {
     if (keyDisplay) keyDisplay.innerText = keyRecord.key;
     if (orderIdDisplay) orderIdDisplay.innerText = `${order.orderId} (${order.billCode || 'ToyyibPay'})`;
     if (buyerDisplay) buyerDisplay.innerText = `${order.customerName} (${order.customerPhone})`;
-    if (priceDisplay) priceDisplay.innerText = `RM ${this.currentProduct.price} (Paid)`;
+    
+    // Determine accurate price paid
+    const priceNum = order.amount !== undefined ? order.amount : (keyRecord.productType === "fizik" ? 2.99 : 19.99);
+    const formattedPrice = Number(priceNum).toFixed(2);
+    if (priceDisplay) priceDisplay.innerText = `RM ${formattedPrice} (Paid)`;
 
     // Link directly with embedded license key
     let portalUrl = keyRecord.portalUrl || "https://kertas22026.vercel.app/";
@@ -502,7 +506,7 @@ class SirHalimStoreApp {
     if (downloadLinkBtn) {
       downloadLinkBtn.href = portalUrl;
       downloadLinkBtn.target = "_blank";
-      if (keyRecord.productType === "cids") {
+      if (keyRecord.productType === "cids" || (order.productId === "cids-suites-pro")) {
         downloadLinkBtn.innerHTML = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -510,6 +514,15 @@ class SirHalimStoreApp {
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
           Open CIDS Suites Pro Portal Now &rsaquo;
+        `;
+      } else {
+        downloadLinkBtn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Open Download Portal Now &rsaquo;
         `;
       }
     }
@@ -527,7 +540,9 @@ class SirHalimStoreApp {
     const customerEmail = order.customerEmail || (this.lastOrderData && this.lastOrderData.customerEmail);
     if (!customerEmail) return;
 
-    const prodTitle = order.productTitle || this.currentProduct.title;
+    const prodTitle = order.productTitle || (keyRecord.productType === "fizik" ? "PDF Physics SPM State Trial Paper 2 2026" : "CIDS Suites Pro (1-Year License)");
+    const priceNum = order.amount !== undefined ? order.amount : (keyRecord.productType === "fizik" ? 2.99 : 19.99);
+    const formattedPrice = Number(priceNum).toFixed(2);
 
     try {
       // 1. Try Vercel Serverless API
@@ -540,7 +555,7 @@ class SirHalimStoreApp {
           licenseKey: keyRecord.key,
           orderId: order.orderId,
           billCode: order.billCode,
-          amount: this.currentProduct.price,
+          amount: formattedPrice,
           productTitle: prodTitle,
           downloadUrl: portalUrl
         })
@@ -552,7 +567,7 @@ class SirHalimStoreApp {
         to_email: customerEmail,
         subject: `[Sir Halim Store] License Key for ${prodTitle}: ${keyRecord.key}`,
         from_name: "Sir Halim Store",
-        message: `Hello ${order.customerName || "Customer"},\n\nThank you for your purchase at Sir Halim Store!\n\nPRODUCT:\n${prodTitle}\n\nYOUR DIGITAL LICENSE KEY:\n${keyRecord.key}\n\nPORTAL LINK (Click to Open):\n${portalUrl}\n\nOrder No: ${order.orderId}\nTotal Paid: RM ${this.currentProduct.price} (Paid)\n\nPlease keep this message for your reference!`
+        message: `Hello ${order.customerName || "Customer"},\n\nThank you for your purchase at Sir Halim Store!\n\nPRODUCT:\n${prodTitle}\n\nYOUR DIGITAL LICENSE KEY:\n${keyRecord.key}\n\nPORTAL LINK (Click to Open):\n${portalUrl}\n\nOrder No: ${order.orderId}\nTotal Paid: RM ${formattedPrice} (Paid)\n\nPlease keep this message for your reference!`
       };
 
       await fetch("https://api.web3forms.com/submit", {
@@ -577,24 +592,27 @@ class SirHalimStoreApp {
     });
   }
 
-  sendWhatsAppReceipt() {
+  sendTelegramReceipt() {
     if (!this.lastOrderData || !this.lastAssignedKey) return;
-    const phone = this.lastOrderData.customerPhone.replace(/[^0-9]/g, "");
     const portalUrl = this.lastAssignedKey.portalUrl || "https://kertas22026.vercel.app/";
+    const priceNum = this.lastOrderData.amount !== undefined ? this.lastOrderData.amount : (this.lastAssignedKey.productType === "fizik" ? 2.99 : 19.99);
+    const formattedPrice = Number(priceNum).toFixed(2);
+    const prodTitle = this.lastOrderData.productTitle || (this.lastAssignedKey.productType === "fizik" ? "PDF Physics SPM State Trial Paper 2 2026" : "CIDS Suites Pro (1-Year License)");
+
     const text = encodeURIComponent(
-      `*SIR HALIM STORE PURCHASE RECEIPT & LICENSE KEY*\n\n` +
+      `SIR HALIM STORE PURCHASE RECEIPT & LICENSE KEY\n\n` +
       `Customer: ${this.lastOrderData.customerName}\n` +
-      `Product: ${this.currentProduct.title}\n` +
+      `Phone: ${this.lastOrderData.customerPhone}\n` +
+      `Product: ${prodTitle}\n` +
       `Order No: ${this.lastOrderData.orderId}\n` +
       `ToyyibPay Bill: ${this.lastOrderData.billCode}\n` +
-      `Total Paid: RM ${this.currentProduct.price} (Paid)\n\n` +
-      `*YOUR LICENSE KEY:* \n*${this.lastAssignedKey.key}*\n\n` +
-      `*Portal Link:* \n${portalUrl}\n\n` +
-      `_Please keep this message for your reference._`
+      `Total Paid: RM ${formattedPrice} (Paid)\n\n` +
+      `YOUR DIGITAL LICENSE KEY:\n${this.lastAssignedKey.key}\n\n` +
+      `Portal Link:\n${portalUrl}\n\n` +
+      `Please keep this message for your reference.`
     );
 
-    const waUrl = phone ? `https://wa.me/${phone.startsWith('6') ? phone : '6' + phone}?text=${text}` : `https://wa.me/?text=${text}`;
-    window.open(waUrl, "_blank");
+    window.open(`https://t.me/halimroslan?text=${text}`, "_blank");
   }
 
   // ==========================================
@@ -680,14 +698,29 @@ class SirHalimStoreApp {
       const savedPending = sessionStorage.getItem("sirhalim_pending_order");
       const pendingData = savedPending ? JSON.parse(savedPending) : {};
 
+      // Determine product type
+      let engineType = pendingData.engineType;
+      let productId = pendingData.productId;
+      if (!engineType) {
+        engineType = "fizik";
+      }
+
       const keyRecord = await window.licenseEngine.autoClaimLicenseKey({
         name: pendingData.customerName || "Customer",
         email: pendingData.customerEmail || "",
         phone: pendingData.customerPhone || "",
         orderId: orderId || pendingData.orderId || `ORD-${Date.now()}`,
         billCode: billCode,
-        engineType: pendingData.engineType || "fizik"
+        engineType: engineType
       });
+
+      if (keyRecord && keyRecord.productType === "cids") {
+        this.currentProduct = this.products["cids-suites-pro"];
+      } else {
+        this.currentProduct = this.products["fizik-kertas2-2026"];
+      }
+
+      const paidAmount = pendingData.amount !== undefined ? pendingData.amount : this.currentProduct.price;
 
       this.lastAssignedKey = keyRecord;
       this.lastOrderData = {
@@ -696,7 +729,9 @@ class SirHalimStoreApp {
         customerName: pendingData.customerName || "Customer",
         customerEmail: pendingData.customerEmail || "",
         customerPhone: pendingData.customerPhone || "",
-        productTitle: pendingData.productTitle || this.currentProduct.title
+        productTitle: pendingData.productTitle || this.currentProduct.title,
+        amount: paidAmount,
+        productId: productId || this.currentProduct.id
       };
 
       this.showOrderReceipt(this.lastOrderData, keyRecord);
