@@ -746,13 +746,13 @@ button {
 }
 
 /* ==========================================================================
-   CINEMATIC VIDEO CARD (PHYSICS PAPER 2 TRIAL)
+   CINEMATIC VIDEO CARD (PHYSICS PAPER 2 TRIAL) - ZERO HARSH EDGES / SEAMLESS DISSOLVE
    ========================================================================== */
 .product-card.card-cinematic-video {
   position: relative !important;
   overflow: hidden !important;
   background: #000000 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
 }
 
@@ -766,9 +766,9 @@ button {
   object-position: center !important;
   border-radius: 18px !important;
   z-index: 1 !important;
-  opacity: 0.82;
+  opacity: 0.75;
   pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -776,22 +776,37 @@ button {
   position: absolute !important;
   inset: 0 !important;
   border-radius: 18px !important;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.96) 0%,
-    rgba(0, 0, 0, 0.90) 32%,
-    rgba(0, 0, 0, 0.65) 42%,
-    rgba(0, 0, 0, 0.10) 60%,
-    rgba(0, 0, 0, 0.40) 80%,
-    rgba(0, 0, 0, 0.96) 100%
-  ) !important;
+  background:
+    /* Perimeter & Corner Radial Vignette - Softens all edges into dark card boundaries */
+    radial-gradient(
+      ellipse 130% 110% at 50% 50%,
+      transparent 35%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(0, 0, 0, 0.85) 85%,
+      rgba(0, 0, 0, 0.98) 100%
+    ),
+    /* 10-Stop Smooth Step Easing Linear Gradient - Zero harsh lines or division bands */
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.98) 0%,
+      rgba(0, 0, 0, 0.95) 12%,
+      rgba(0, 0, 0, 0.88) 22%,
+      rgba(0, 0, 0, 0.72) 32%,
+      rgba(0, 0, 0, 0.45) 42%,
+      rgba(0, 0, 0, 0.18) 52%,
+      rgba(0, 0, 0, 0.12) 60%,
+      rgba(0, 0, 0, 0.30) 70%,
+      rgba(0, 0, 0, 0.60) 80%,
+      rgba(0, 0, 0, 0.86) 90%,
+      rgba(0, 0, 0, 0.98) 100%
+    ) !important;
   z-index: 2 !important;
   pointer-events: none;
 }
 
 .product-card.card-cinematic-video:hover .card-video-backdrop {
-  opacity: 1;
-  transform: scale(1.05);
+  opacity: 0.92;
+  transform: scale(1.04);
 }
 
 .product-card.card-cinematic-video .card-product-img {
@@ -800,7 +815,7 @@ button {
 }
 
 .product-card.card-cinematic-video:hover .card-product-img {
-  transform: scale(1.05) translateY(-3px);
+  transform: scale(1.04) translateY(-2px);
   filter: none !important;
 }
 
