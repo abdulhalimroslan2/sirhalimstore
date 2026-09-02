@@ -30,8 +30,10 @@
   --border-card: rgba(0, 0, 0, 0.04);
   --border-dark: rgba(255, 255, 255, 0.12);
 
-  --shadow-card: none;
-  --shadow-hover: none;
+  --shadow-card: 2px 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 2px 8px 22px rgba(0, 0, 0, 0.12);
+  --shadow-card-dark: 2px 4px 18px rgba(0, 0, 0, 0.14);
+  --shadow-hover-dark: 2px 8px 26px rgba(0, 0, 0, 0.20);
   --shadow-float: 0 20px 50px rgba(0, 0, 0, 0.18);
 
   --radius-card: 18px;
@@ -631,7 +633,7 @@ button {
   height: 500px;
   background: var(--bg-card);
   border-radius: var(--radius-card);
-  box-shadow: none !important;
+  box-shadow: var(--shadow-card);
   padding: 30px 30px 24px;
   display: flex;
   flex-direction: column;
@@ -639,21 +641,25 @@ button {
   position: relative;
   scroll-snap-align: start;
   border: 1px solid var(--border-card);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
   cursor: pointer;
   overflow: hidden;
 }
 
 .product-card:hover {
   transform: scale(1.015);
-  box-shadow: none !important;
+  box-shadow: var(--shadow-hover);
 }
 
 .product-card.card-dark {
   background: #000000;
   color: #ffffff;
   border: none;
-  box-shadow: none !important;
+  box-shadow: var(--shadow-card-dark);
+}
+
+.product-card.card-dark:hover {
+  box-shadow: var(--shadow-hover-dark);
 }
 
 .card-top-info {
@@ -754,7 +760,12 @@ button {
   overflow: hidden !important;
   background: #000000 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow-card-dark) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+}
+
+.product-card.card-cinematic-video:hover {
+  box-shadow: var(--shadow-hover-dark) !important;
 }
 
 .card-video-backdrop {
@@ -969,19 +980,19 @@ button {
   height: 240px;
   background: var(--bg-card);
   border-radius: var(--radius-card);
-  box-shadow: none !important;
+  box-shadow: var(--shadow-card);
   border: 1px solid var(--border-card);
   padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 16px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .diff-card-item:hover {
   transform: translateY(-3px);
-  box-shadow: none !important;
+  box-shadow: var(--shadow-hover);
 }
 
 .diff-icon-wrap {
