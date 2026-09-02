@@ -778,11 +778,11 @@ button {
   border-radius: 18px !important;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.90) 0%,
-    rgba(0, 0, 0, 0.65) 28%,
-    rgba(0, 0, 0, 0.15) 50%,
-    rgba(0, 0, 0, 0.35) 75%,
-    rgba(0, 0, 0, 0.95) 100%
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.70) 25%,
+    rgba(0, 0, 0, 0.10) 50%,
+    rgba(0, 0, 0, 0.55) 72%,
+    rgba(0, 0, 0, 1.00) 100%
   ) !important;
   z-index: 2 !important;
   pointer-events: none;
