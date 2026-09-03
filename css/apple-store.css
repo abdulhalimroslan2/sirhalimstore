@@ -41,6 +41,21 @@
 
   --nav-height: 44px;
   --ribbon-height: 40px;
+
+  /* Apple Store Shelf Alignment Gutter (Exact Pixel Match for Header & Cards) */
+  --shelf-gutter: 22px;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+  :root {
+    --shelf-gutter: calc(-268.46154px + 28.36538vw);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  :root {
+    --shelf-gutter: 140px;
+  }
 }
 
 /* Reset */
@@ -596,6 +611,10 @@ button {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  padding-left: var(--shelf-gutter);
+  padding-right: var(--shelf-gutter);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .headline-title {
@@ -629,8 +648,9 @@ button {
   overflow-y: hidden;
   padding-top: 10px;
   padding-bottom: 28px;
-  padding-left: max(20px, calc((100vw - 1280px) / 2 + 20px));
-  padding-right: max(20px, calc((100vw - 1280px) / 2 + 20px));
+  padding-left: var(--shelf-gutter);
+  padding-right: var(--shelf-gutter);
+  scroll-padding-left: var(--shelf-gutter);
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -676,7 +696,7 @@ button {
 }
 
 .paddlenav-arrow-previous {
-  left: 18px;
+  left: max(18px, calc(var(--shelf-gutter) - 20px));
 }
 
 .paddlenav-arrow-next {
@@ -963,8 +983,9 @@ button {
   overflow-y: hidden;
   padding-top: 10px;
   padding-bottom: 28px;
-  padding-left: max(20px, calc((100vw - 1280px) / 2 + 20px));
-  padding-right: max(20px, calc((100vw - 1280px) / 2 + 20px));
+  padding-left: var(--shelf-gutter);
+  padding-right: var(--shelf-gutter);
+  scroll-padding-left: var(--shelf-gutter);
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
@@ -1072,8 +1093,9 @@ button {
   overflow-y: hidden;
   padding-top: 10px;
   padding-bottom: 28px;
-  padding-left: max(20px, calc((100vw - 1280px) / 2 + 20px));
-  padding-right: max(20px, calc((100vw - 1280px) / 2 + 20px));
+  padding-left: var(--shelf-gutter);
+  padding-right: var(--shelf-gutter);
+  scroll-padding-left: var(--shelf-gutter);
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;

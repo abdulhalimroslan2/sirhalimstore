@@ -181,6 +181,15 @@ class SirHalimStoreApp {
     const nextBtn = document.getElementById("paddleNext");
     if (!carousel) return;
 
+    // Reset initial scroll to 0 so first card is always aligned with headline
+    try {
+      carousel.scrollLeft = 0;
+      const helpCarousel = document.getElementById("helpCarousel");
+      if (helpCarousel) helpCarousel.scrollLeft = 0;
+      const diffCarousel = document.getElementById("diffCarousel");
+      if (diffCarousel) diffCarousel.scrollLeft = 0;
+    } catch (e) {}
+
     // Update paddle states (disable/hide when at bounds)
     const updatePaddles = () => {
       const scrollLeft = carousel.scrollLeft;
