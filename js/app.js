@@ -188,6 +188,8 @@ class SirHalimStoreApp {
       if (helpCarousel) helpCarousel.scrollLeft = 0;
       const diffCarousel = document.getElementById("diffCarousel");
       if (diffCarousel) diffCarousel.scrollLeft = 0;
+      const categoryScroll = document.getElementById("categoryScrollContainer");
+      if (categoryScroll) categoryScroll.scrollLeft = 0;
     } catch (e) {}
 
     // Update paddle states (disable/hide when at bounds)

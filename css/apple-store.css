@@ -481,8 +481,12 @@ button {
    3. HERO SECTION (100% APPLE STORE EXACT)
    ========================================================================== */
 .hero-section {
+  width: 100%;
   padding-top: 48px;
   padding-bottom: 28px;
+  padding-left: var(--shelf-gutter);
+  padding-right: var(--shelf-gutter);
+  box-sizing: border-box;
 }
 
 .hero-grid {
@@ -490,6 +494,7 @@ button {
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
+  width: 100%;
 }
 
 .hero-title-main {
@@ -498,6 +503,7 @@ button {
   letter-spacing: -0.015em;
   line-height: 1.05;
   color: var(--text-main);
+  text-align: left;
 }
 
 .hero-title-main span.dim {
@@ -538,8 +544,10 @@ button {
    4. CATEGORY ICON STRIP (PRODUCT SELECTOR - 100% APPLE STORE WEB)
    ========================================================================== */
 .category-strip-section {
+  width: 100%;
   padding-top: 16px;
   padding-bottom: 44px;
+  box-sizing: border-box;
 }
 
 .category-scroll-container {
@@ -548,7 +556,11 @@ button {
   justify-content: flex-start;
   gap: 36px;
   overflow-x: auto;
-  padding: 12px 0 20px;
+  padding-top: 12px;
+  padding-bottom: 20px;
+  padding-left: var(--shelf-gutter);
+  padding-right: var(--shelf-gutter);
+  scroll-padding-left: var(--shelf-gutter);
   scrollbar-width: none;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -1524,7 +1536,11 @@ button {
   }
   .category-scroll-container {
     gap: 20px;
-    padding: 6px 0 16px;
+    padding-top: 6px;
+    padding-bottom: 16px;
+    padding-left: var(--shelf-gutter);
+    padding-right: var(--shelf-gutter);
+    scroll-padding-left: var(--shelf-gutter);
   }
   .category-card {
     min-width: 80px;
