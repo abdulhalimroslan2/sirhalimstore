@@ -171,9 +171,142 @@ class SirHalimStoreApp {
   // ==========================================
   // CAROUSEL LOGIC
   // ==========================================
+  // ==========================================
+  // CAROUSEL LOGIC - APPLE STORE PADDLENAV & DRAG-TO-SCROLL
+  // ==========================================
   initCarousel() {
     const carousel = document.getElementById("cardsCarousel");
+    const container = carousel ? carousel.closest(".cards-carousel-container") : null;
+    const prevBtn = document.getElementById("paddlePrev");
+    const nextBtn = document.getElementById("paddleNext");
     if (!carousel) return;
+
+    // Update paddle states (disable/hide when at bounds)
+    const updatePaddles = () => {
+      const scrollLeft = carousel.scrollLeft;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+      if (prevBtn) {
+        if (scrollLeft <= 5) {
+          prevBtn.disabled = true;
+          prevBtn.classList.add("is-hidden");
+        } else {
+          prevBtn.disabled = false;
+          prevBtn.classList.remove("is-hidden");
+        }
+      }
+
+      if (nextBtn) {
+        if (scrollLeft >= maxScroll - 8) {
+          nextBtn.disabled = true;
+          nextBtn.classList.add("is-hidden");
+        } else {
+          nextBtn.disabled = false;
+          nextBtn.classList.remove("is-hidden");
+        }
+      }
+    };
+
+    // Paddle visibility: only visible when user tries to move or interacts with cards
+    let moveTimeout = null;
+    const triggerMoving = () => {
+      if (container) {
+        container.classList.add("is-moving");
+      }
+      clearTimeout(moveTimeout);
+      moveTimeout = setTimeout(() => {
+        if (container && !container.matches(":hover")) {
+          container.classList.remove("is-moving");
+        }
+      }, 1600);
+      updatePaddles();
+    };
+
+    // Events that indicate user is moving / interacting with cards
+    carousel.addEventListener("scroll", triggerMoving, { passive: true });
+    carousel.addEventListener("touchstart", triggerMoving, { passive: true });
+    carousel.addEventListener("touchmove", triggerMoving, { passive: true });
+
+    if (container) {
+      container.addEventListener("mouseenter", () => {
+        triggerMoving();
+        updatePaddles();
+      });
+      container.addEventListener("mousemove", triggerMoving);
+      container.addEventListener("mouseleave", () => {
+        if (container) {
+          container.classList.remove("is-moving");
+        }
+      });
+    }
+
+    // Button clicks (smooth scroll by 1 card + gap = 400px)
+    if (prevBtn) {
+      prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        carousel.scrollBy({ left: -400, behavior: "smooth" });
+        triggerMoving();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        carousel.scrollBy({ left: 400, behavior: "smooth" });
+        triggerMoving();
+      });
+    }
+
+    // Mouse drag-to-scroll engine (Apple fluid feel)
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let hasDragged = false;
+
+    carousel.addEventListener("mousedown", (e) => {
+      // Ignore if clicking on buttons or links
+      if (e.target.closest("button") || e.target.closest(".blue-link") || e.target.closest("a")) return;
+      isDown = true;
+      hasDragged = false;
+      carousel.classList.add("is-dragging");
+      startX = e.pageX - carousel.offsetLeft;
+      scrollStart = carousel.scrollLeft;
+      triggerMoving();
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (isDown) {
+        isDown = false;
+        carousel.classList.remove("is-dragging");
+      }
+    });
+
+    carousel.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.35;
+      if (Math.abs(walk) > 4) {
+        hasDragged = true;
+      }
+      carousel.scrollLeft = scrollStart - walk;
+      triggerMoving();
+    });
+
+    // Suppress card click if dragging occurred
+    carousel.addEventListener("click", (e) => {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        hasDragged = false;
+      }
+    }, true);
+
+    // Initial check on load and resize
+    updatePaddles();
+    window.addEventListener("resize", updatePaddles);
   }
 
   // ==========================================

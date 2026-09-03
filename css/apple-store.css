@@ -609,21 +609,110 @@ button {
   font-weight: 500;
 }
 
+.shelf-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 64px;
+}
+
 .cards-carousel-container {
   position: relative;
-  margin-bottom: 64px;
+  width: 100%;
+  overflow: visible;
 }
 
 .cards-scroll-track {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 10px 0 24px;
+  overflow-y: hidden;
+  padding-top: 10px;
+  padding-bottom: 28px;
+  padding-left: max(20px, calc((100vw - 1280px) / 2 + 20px));
+  padding-right: max(20px, calc((100vw - 1280px) / 2 + 20px));
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  cursor: grab;
 }
+
+.cards-scroll-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
 .cards-scroll-track::-webkit-scrollbar {
   display: none;
+}
+
+/* ==========================================================================
+   APPLE STORE EXACT PADDLENAV CONTROLS (CIRCULAR CHEVRON BUTTONS)
+   ========================================================================== */
+.paddlenav-arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(210, 210, 215, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: #1d1d1f;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 25;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.35s cubic-bezier(0.15, 0, 0.2, 1), transform 0.35s cubic-bezier(0.15, 0, 0.2, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: none;
+}
+
+.paddlenav-arrow-previous {
+  left: 18px;
+}
+
+.paddlenav-arrow-next {
+  right: 18px;
+}
+
+/* Visibility: only visible when user moves/interacts or hovers */
+.cards-carousel-container:hover .paddlenav-arrow:not([disabled]),
+.cards-carousel-container.is-moving .paddlenav-arrow:not([disabled]) {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.paddlenav-arrow:hover:not([disabled]) {
+  background: rgba(240, 240, 245, 0.95);
+  color: #000000;
+  transform: scale(1.08) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.paddlenav-arrow:active:not([disabled]) {
+  transform: scale(0.95) !important;
+}
+
+.paddlenav-arrow[disabled],
+.paddlenav-arrow.is-hidden {
+  opacity: 0 !important;
+  transform: scale(0.7) !important;
+  pointer-events: none !important;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .paddlenav-arrow {
+    display: none !important;
+  }
 }
 
 /* Exact Apple Card Dimensions & Styling - 100% Apple Store Web (No Double Frame) */
@@ -871,8 +960,17 @@ button {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 10px 0 24px;
+  overflow-y: hidden;
+  padding-top: 10px;
+  padding-bottom: 28px;
+  padding-left: max(20px, calc((100vw - 1280px) / 2 + 20px));
+  padding-right: max(20px, calc((100vw - 1280px) / 2 + 20px));
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+.help-grid-track::-webkit-scrollbar {
+  display: none;
 }
 
 .specialist-portrait-img {
@@ -971,8 +1069,17 @@ button {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 10px 0 24px;
+  overflow-y: hidden;
+  padding-top: 10px;
+  padding-bottom: 28px;
+  padding-left: max(20px, calc((100vw - 1280px) / 2 + 20px));
+  padding-right: max(20px, calc((100vw - 1280px) / 2 + 20px));
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+.diff-grid-track::-webkit-scrollbar {
+  display: none;
 }
 
 .diff-card-item {
