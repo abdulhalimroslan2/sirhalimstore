@@ -674,31 +674,31 @@ button {
 .paddlenav-arrow {
   position: absolute;
   top: 50%;
-  margin-top: -18px;
-  width: 36px;
-  height: 36px;
-  border-radius: 36px;
+  margin-top: -28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
   background: #d2d2d7a3;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   color: #0000008f;
   border: none;
   padding: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 25;
   opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.35s cubic-bezier(0.15, 0, 0.2, 1), transform 0.35s cubic-bezier(0.15, 0, 0.2, 1), background 0.1s linear, color 0.1s linear;
+  transform: scale(0.85);
+  transition: opacity 0.35s cubic-bezier(0.15, 0, 0.2, 1), transform 0.35s cubic-bezier(0.15, 0, 0.2, 1), background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
   pointer-events: none;
 }
 
 .paddlenav-arrow svg {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   display: block;
 }
 
@@ -708,7 +708,7 @@ button {
 }
 
 .paddlenav-arrow-previous {
-  left: max(18px, calc(var(--shelf-gutter) - 18px));
+  left: max(18px, calc(var(--shelf-gutter) - 28px));
 }
 
 .paddlenav-arrow-next {
@@ -724,16 +724,16 @@ button {
 }
 
 .paddlenav-arrow:hover:not([disabled]) {
-  background: hsla(240, 7%, 88%, 0.75);
-  color: #000000a3;
-  transform: scale(1.02);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  background: hsla(240, 7%, 88%, 0.85);
+  color: #000000;
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 }
 
 .paddlenav-arrow:active:not([disabled]) {
-  background: hsla(240, 4%, 77%, 0.70);
-  color: #000000a3;
-  transform: scale(0.95);
+  background: hsla(240, 4%, 77%, 0.80);
+  color: #000000;
+  transform: scale(0.96);
 }
 
 .paddlenav-arrow[disabled],
